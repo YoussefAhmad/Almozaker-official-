@@ -67,11 +67,11 @@ jobs:
 
       - name: Build APK
         run: |
-          cordova build android --release
-          echo "APK files produced:"
-          find platforms -type f -name "*.apk" -print
-          find platforms -type f -name "*.apk" | grep -q . || {
-            echo "ERROR: Cordova build completed but no APK was found under platforms/"
+          cordova build android --release -- --packageType=apk
+          echo "Searching for generated APK..."
+          find . -type f -name "*.apk" -print
+          find . -type f -name "*.apk" | grep -q . || {
+            echo "ERROR: No APK generated. Check Cordova/Gradle build logs."
             exit 1
           }
 
@@ -79,5 +79,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: almozaker-release-apk
-          path: platforms/**/*.apk
+          path: '**/*.apk'
           if-no-files-found: error
