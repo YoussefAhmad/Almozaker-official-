@@ -1,62 +1,85 @@
-name: Build Almozaker APK
+name: Build Almozaker Android APK
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'www/**'
+      - 'resources/**'
+      - 'config.xml'
+      - 'package.json'
+      - '.github/workflows/build-apk.yml'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Java 17
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
+      - name: Setup Android SDK
         uses: android-actions/setup-android@v4
-        with:
-          packages: 'platform-tools'
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      - name: Install Android platform tools and SDK
+        run: |
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
-      - name: Install Cordova and resource generator
-        run: npm install -g cordova cordova-res
+      - name: Install Cordova CLI
+        run: npm install -g cordova@12
 
       - name: Install project dependencies
-        run: npm install
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          elif [ -f package.json ]; then
+            npm install
+          fi
+
+      - name: Verify resource files
+        run: |
+          test -f resources/icon.png || (echo "Missing resources/icon.png" && exit 1)
+          test -f resources/splash.png || (echo "Missing resources/splash.png" && exit 1)
+          test -f resources/notification.png || (echo "Missing resources/notification.png" && exit 1)
+          python3 - <<'PY'
+          from PIL import Image
+          for p in ['resources/icon.png','resources/splash.png','resources/notification.png']:
+              im=Image.open(p)
+              print(p, im.size, im.mode)
+          s=Image.open('resources/splash.png')
+          if s.width < 1920 or s.height < 1920:
+              raise SystemExit('resources/splash.png must be at least 1920x1920')
+          PY
 
       - name: Add Android platform
-        run: npx cordova platform add android@13
-
-      - name: Use resources/icon.png for icon, splash, and notification source
         run: |
-          test -s resources/icon.png || (echo 'Missing resources/icon.png'; exit 1)
-          mkdir -p resources/android
-          cp resources/icon.png resources/splash.png
-          cp resources/icon.png resources/android/splash.png
-          cp resources/icon.png resources/notification.png
+          if [ ! -d platforms/android ]; then
+            cordova platform add android@13
+          fi
 
-      - name: Generate Android icon and splash resources
-        run: cordova-res android --skip-config --copy
-
-      - name: Copy notification image into Android resources
+      - name: Prepare Android resources
         run: |
-          mkdir -p platforms/android/app/src/main/res/drawable
-          cp resources/icon.png platforms/android/app/src/main/res/drawable/notification_icon.png
+          npm install --no-save cordova-res
+          npx cordova-res android --skip-config --copy
 
-      - name: Build APK
-        run: npx cordova build android
+      - name: Build release APK
+        run: cordova build android --release
 
-      - name: Upload debug APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Almozaker-debug-apk
-          path: platforms/android/app/build/outputs/apk/debug/*.apk
+          name: almozaker-release-apk
+          path: platforms/android/app/build/outputs/apk/release/*.apk
           if-no-files-found: error
