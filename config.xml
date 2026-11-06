@@ -1,9 +1,11 @@
+
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="com.almozaker.app"
         version="1.5.3">
+
     <name>المُذَكِّر</name>
     <description>رفيقك اليومي للعبادة والذكر والإنجاز.</description>
     <content src="index.html" />
@@ -12,22 +14,46 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 
+    <!-- App Icon -->
+    <icon src="resources/icon.png" />
+
+    <!-- Splash Screen -->
+    <splash src="resources/splash.png" />
+
+    <!-- Notification Icon Resource -->
+    <resource-file
+        src="resources/notification.png"
+        target="app/src/main/res/drawable/notification.png" />
+
+    <!-- Android Preferences -->
     <preference name="AndroidXEnabled" value="true" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="BackupWebStorage" value="local" />
-    <preference name="cordova.plugins.diagnostic.modules" value="LOCATION" />
+    <preference name="cordova.plugins.diagnostic.modules"
+                value="LOCATION" />
 
-    <!-- Android permissions for exact alarms and the user-approved battery-optimization exemption request. -->
+    <!-- Android Permissions -->
     <config-file target="AndroidManifest.xml" parent="/manifest">
-        <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-        <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+        <uses-permission
+            android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+        <uses-permission
+            android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     </config-file>
 
-    <plugin name="cordova-plugin-local-notifications-continued" spec="1.2.4" />
-    <plugin name="cordova-plugin-geolocation" spec="^5.0.0" />
-    <plugin name="cordova-plugin-android-permissions" spec="^1.1.5" />
-    <plugin name="cordova-plugin-device" spec="^3.0.0" />
-    <plugin name="cordova-plugin-file" spec="^8.1.3" />
-    <plugin name="cordova-plugin-save-dialog" spec="2.0.1" />
-    <plugin name="cordova.plugins.diagnostic" spec="7.4.0" />
+    <!-- Plugins -->
+    <plugin name="cordova-plugin-local-notifications-continued"
+            spec="1.2.4" />
+    <plugin name="cordova-plugin-geolocation"
+            spec="^5.0.0" />
+    <plugin name="cordova-plugin-android-permissions"
+            spec="^1.1.5" />
+    <plugin name="cordova-plugin-device"
+            spec="^3.0.0" />
+    <plugin name="cordova-plugin-file"
+            spec="^8.1.3" />
+    <plugin name="cordova-plugin-save-dialog"
+            spec="2.0.1" />
+    <plugin name="cordova.plugins.diagnostic"
+            spec="7.4.0" />
+
 </widget>
