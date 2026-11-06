@@ -1,0 +1,1356 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#102c25" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="المُذَكِّر — رفيقك اليومي للعبادة والذكر والإنجاز." />
+  <title>المُذَكِّر | رفيق يومك إلى الله</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap');
+    :root{
+      --forest:#102c25;--forest-2:#173c32;--forest-3:#245246;--gold:#c8a96a;--gold-soft:#eee1c5;
+      --ink:#202b27;--muted:#7c8580;--paper:#f5f4ef;--white:#fffefa;--line:#e9e7df;
+      --green:#2e725b;--green-soft:#e8f1eb;--red:#b95c52;--shadow:0 16px 45px rgba(28,47,39,.07);
+      --radius:22px;--font:'Alexandria',system-ui,sans-serif;
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:13px;line-height:1.8}
+    button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+    .app{min-height:100vh;display:flex}.sidebar{width:248px;position:fixed;inset:0 0 0 auto;background:var(--forest);color:#fff;display:flex;flex-direction:column;padding:29px 18px 22px;z-index:20}
+    .brand{display:flex;align-items:center;gap:12px;padding:0 8px 34px}.brand-mark{width:43px;height:43px;border:1px solid rgba(207,179,122,.55);border-radius:15px;display:grid;place-items:center;color:var(--gold);background:rgba(255,255,255,.04)}.brand-mark svg{width:23px;height:23px}.brand-name{font-weight:800;font-size:17px;letter-spacing:-.5px}.brand-sub{font-size:9px;color:#a7b8ae;margin-top:-2px;letter-spacing:.4px}
+    .nav-label{font-size:9px;color:#81988c;padding:0 13px;margin:8px 0 12px;letter-spacing:1px}.nav-list{display:grid;gap:7px}.nav-btn{display:flex;align-items:center;gap:13px;width:100%;border:0;background:transparent;color:#b9c7bf;text-align:right;padding:12px 14px;border-radius:13px;font-size:11px;transition:.2s}.nav-btn svg{width:18px;height:18px;opacity:.85}.nav-btn:hover{background:rgba(255,255,255,.07);color:#fff}.nav-btn.active{background:rgba(200,169,106,.15);color:#f0d9a8;box-shadow:inset -2px 0 var(--gold)}.sidebar-spacer{flex:1}.side-verse{border:1px solid rgba(214,192,147,.2);background:rgba(255,255,255,.035);padding:17px 14px;border-radius:16px;margin:20px 2px}.side-verse .arabic{font-family:'Amiri',serif;font-size:18px;line-height:1.8;color:#ead8b5}.side-verse small{display:block;color:#91a398;font-size:9px;margin-top:8px}.profile{display:flex;align-items:center;gap:10px;padding:17px 6px 0;border-top:1px solid rgba(255,255,255,.1)}.avatar{height:36px;width:36px;border-radius:50%;display:grid;place-items:center;background:#d7c292;color:var(--forest);font-weight:800}.profile b{display:block;font-size:10px}.profile span{font-size:9px;color:#9aada2}
+    .main{margin-right:248px;width:calc(100% - 248px);min-height:100vh;padding:31px clamp(20px,4vw,62px) 55px}.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:27px;gap:15px}.date-label{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:8px}.date-label svg{width:15px;color:var(--gold)}.top-actions{display:flex;align-items:center;gap:10px}.icon-btn{position:relative;border:1px solid var(--line);background:var(--white);width:42px;height:42px;border-radius:14px;display:grid;place-items:center;color:#536159;transition:.2s}.icon-btn:hover{border-color:#d4c196;color:var(--forest)}.icon-btn svg{width:18px;height:18px}.notif-dot{position:absolute;top:8px;left:9px;width:6px;height:6px;background:#c77b63;border:1px solid white;border-radius:50%}.location-pill{display:flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:8px 12px;color:#657169;font-size:10px}.location-pill svg{width:14px;color:var(--green)}
+    .page{display:none;animation:fade .3s ease}.page.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+    .welcome{margin-bottom:19px}.eyebrow{color:#9a8354;font-size:9px;font-weight:700;letter-spacing:1.2px}.welcome h1{font-size:clamp(21px,2.5vw,30px);line-height:1.5;margin:4px 0 1px;letter-spacing:-1px;font-weight:800;color:#1d2d26}.welcome p{color:var(--muted);font-size:11px;margin:0}
+    .hero{position:relative;overflow:hidden;min-height:205px;background:linear-gradient(110deg,#102c25 0%,#173d32 65%,#1c493a 100%);border-radius:25px;padding:29px 32px;color:#fff;display:flex;justify-content:space-between;align-items:center;box-shadow:0 20px 45px rgba(16,44,37,.15);margin-bottom:22px}.hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(214,190,140,.12);border-radius:50%;width:330px;height:330px;left:-80px;top:-170px}.hero:after{width:230px;height:230px;left:-29px;top:-120px}.hero-content{position:relative;z-index:2;max-width:570px}.hero-kicker{display:flex;align-items:center;gap:8px;color:#d7c18f;font-size:9px;margin-bottom:9px}.hero-kicker span{width:20px;height:1px;background:var(--gold)}.hero h2{font-size:clamp(19px,2.2vw,25px);font-weight:700;line-height:1.6;margin:0 0 8px;letter-spacing:-.6px}.hero p{color:#c3d0c8;font-size:10px;max-width:460px;margin:0 0 18px}.hero-button{display:inline-flex;align-items:center;gap:8px;background:#d5bb83;color:#20352b;border:0;border-radius:10px;padding:9px 14px;font-size:10px;font-weight:700;box-shadow:0 5px 15px rgba(0,0,0,.12)}.hero-button svg{width:14px}.hero-progress{position:relative;z-index:2;width:135px;height:135px;flex:0 0 135px;display:grid;place-items:center;margin-left:15px}.hero-progress svg{position:absolute;inset:0;transform:rotate(-90deg)}.hero-progress .track{stroke:rgba(255,255,255,.14)}.hero-progress .value{stroke:#d6bd89;stroke-linecap:round;transition:stroke-dashoffset .4s}.hero-progress strong{font-size:25px;display:block;text-align:center;line-height:1.3}.hero-progress small{display:block;color:#b7c8bd;font-size:9px;text-align:center;margin-top:4px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin:24px 0 12px;gap:10px}.section-head h3{font-size:14px;margin:0;font-weight:800;color:#26372f}.section-head p{font-size:9px;color:var(--muted);margin:2px 0 0}.text-link{border:0;background:transparent;color:#8e7748;font-size:10px;padding:4px}.text-link:hover{color:var(--green)}
+    .dashboard-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.85fr);gap:17px;align-items:start}.card{background:var(--white);border:1px solid rgba(224,223,214,.8);border-radius:var(--radius);box-shadow:0 7px 25px rgba(30,48,40,.025)}.prayer-card{padding:20px 20px 18px}.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.card-title{display:flex;align-items:center;gap:9px}.card-title .symbol{height:34px;width:34px;display:grid;place-items:center;border-radius:11px;background:#edf2ec;color:var(--green)}.card-title svg{width:17px;height:17px}.card-title h3{font-size:12px;margin:0}.card-title p{font-size:9px;color:var(--muted);margin:0}.subtle-tag{font-size:8px;color:#8a7955;background:#f6f0e3;padding:5px 9px;border-radius:20px}.next-prayer{background:#f2f5ef;border-radius:15px;padding:13px 15px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.next-prayer small{display:block;color:#819087;font-size:9px}.next-prayer b{font-size:15px;color:#274638}.countdown{text-align:left}.countdown strong{font-size:17px;letter-spacing:1px;color:#294f3e;font-variant-numeric:tabular-nums}.countdown span{display:block;font-size:8px;color:#87938b}.prayer-list{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.prayer-item{text-align:center;padding:11px 3px 9px;border-radius:12px;border:1px solid #eeede6;background:#fffefa;min-width:0}.prayer-item.active{background:#183d32;border-color:#183d32;color:white;box-shadow:0 7px 17px rgba(24,61,50,.14)}.prayer-icon{height:19px;color:#a18a59;margin-bottom:4px}.prayer-item.active .prayer-icon{color:#dfc88f}.prayer-icon svg{width:17px;height:17px}.prayer-item b{display:block;font-size:9px;font-weight:700}.prayer-item span{font-size:9px;color:#929a94;font-variant-numeric:tabular-nums;display:block;margin-top:2px}.prayer-item.active span{color:#d5e0d8}.prayer-foot{font-size:8px;color:#9a9f98;margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:8px}.prayer-foot button{border:0;background:transparent;color:#8d784e;font-size:9px}
+    .side-stack{display:grid;gap:15px}.progress-card{padding:19px}.mini-stats{display:flex;align-items:center;gap:14px}.mini-ring{width:60px;height:60px;position:relative;display:grid;place-items:center;flex:0 0 auto}.mini-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}.mini-ring b{font-size:13px}.mini-stats strong{font-size:11px;display:block}.mini-stats span{font-size:9px;color:var(--muted)}.stats-line{height:1px;background:var(--line);margin:16px 0 12px}.stat-row{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-size:9px;color:#7e8981}.stat-row b{font-size:10px;color:#34483d}.streak-card{padding:17px 18px;background:#f4eee1;border:1px solid #ede3cf;border-radius:19px;display:flex;align-items:center;gap:12px}.streak-icon{height:39px;width:39px;display:grid;place-items:center;background:#e8d8b6;border-radius:13px;color:#896d39}.streak-icon svg{width:19px}.streak-card strong{display:block;font-size:11px;color:#65532f}.streak-card span{display:block;font-size:9px;color:#99875e}
+    .tasks-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.85fr);gap:17px;align-items:start}.task-card{padding:19px}.task-group-title{display:flex;align-items:center;gap:8px;margin:4px 0 11px;color:#52665a;font-size:10px;font-weight:700}.task-group-title:not(:first-child){margin-top:20px}.task-group-title svg{width:15px;height:15px;color:#a58b55}.task-list{display:grid;gap:7px}.task-row{display:flex;align-items:center;gap:11px;padding:11px 11px;border:1px solid #efeee8;border-radius:13px;background:#fffefa;transition:.2s;cursor:pointer;min-width:0}.task-row:hover{border-color:#d8d0bb;background:#fff}.task-row.done{background:#f5f8f3;border-color:#e2ebe0}.task-check{width:21px;height:21px;border:1.5px solid #d8dcd5;border-radius:7px;display:grid;place-items:center;flex:0 0 auto;color:transparent;transition:.2s}.task-check svg{width:13px;height:13px}.task-row.done .task-check{background:#3d775e;border-color:#3d775e;color:#fff}.task-info{min-width:0;flex:1}.task-info b{font-size:10px;display:block;color:#34443b;font-weight:600}.task-info span{font-size:8px;color:#9aa29b;display:block;margin-top:1px}.task-row.done .task-info b{color:#7b897f;text-decoration:line-through;text-decoration-color:#b9c8bb}.task-side{font-size:8px;color:#9a8c6b;white-space:nowrap}.task-bonus{padding:18px;border-radius:19px;background:#f3f0e8;border:1px solid #eae5d9}.task-bonus h4{margin:0 0 5px;font-size:11px}.task-bonus p{font-size:9px;color:#84877e;margin:0 0 12px}.bonus-action{width:100%;border:1px solid #ded5c2;background:#fffdf7;color:#6f5d3d;padding:9px 10px;border-radius:10px;text-align:right;font-size:9px;display:flex;align-items:center;justify-content:space-between}.bonus-action svg{width:14px}.mini-tasbeeh{padding:17px;margin-top:14px}.mini-tasbeeh-row{display:flex;align-items:center;justify-content:space-between}.mini-tasbeeh .counter{font-size:24px;font-weight:700;color:#294f3e;font-variant-numeric:tabular-nums}.mini-tasbeeh small{display:block;color:#8e9990;font-size:8px}.round-add{border:0;width:36px;height:36px;border-radius:12px;background:var(--forest);color:#e4d1a6;display:grid;place-items:center}.round-add svg{width:16px}
+    .page-heading{margin:2px 0 21px}.page-heading h1{font-size:24px;margin:2px 0 3px}.page-heading p{margin:0;color:var(--muted);font-size:10px}.achievement-summary{padding:22px;background:linear-gradient(115deg,#173d32,#285646);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.achievement-summary h2{font-size:17px;margin:0 0 4px}.achievement-summary p{font-size:9px;color:#bdcdc2;margin:0}.achievement-number{font-size:34px;font-weight:800;color:#e4ce9d}.achievement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.achievement{padding:17px;text-align:center}.achievement-icon{width:52px;height:52px;margin:0 auto 10px;border-radius:17px;background:#f3efe5;color:#a48a54;display:grid;place-items:center}.achievement-icon svg{width:23px;height:23px}.achievement.locked{opacity:.55}.achievement h3{font-size:10px;margin:0 0 3px}.achievement p{font-size:8px;color:#929990;margin:0 0 10px;min-height:30px}.achievement progress{width:100%;height:5px;border:0;border-radius:8px;overflow:hidden;accent-color:#4c8066}.achievement progress::-webkit-progress-bar{background:#eeeee8;border-radius:8px}.achievement progress::-webkit-progress-value{background:#5b8b70;border-radius:8px}
+    .tasbeeh-wrap{max-width:690px;margin:auto}.tasbeeh-card{padding:30px;text-align:center;background:linear-gradient(155deg,#173d32,#102a23);color:#fff;overflow:hidden;position:relative}.tasbeeh-card:before{content:"";position:absolute;width:280px;height:280px;top:-170px;right:-50px;border:1px solid rgba(219,194,143,.18);border-radius:50%}.tasbeeh-label{color:#d8c18b;font-size:10px}.tasbeeh-phrase{font-family:'Amiri',serif;font-size:29px;margin:15px 0 20px;color:#fff4d9}.tasbeeh-count{font-size:62px;font-weight:700;line-height:1.2;letter-spacing:2px;font-variant-numeric:tabular-nums}.tasbeeh-target{color:#b3c1b7;font-size:10px;margin:4px 0 24px}.tasbeeh-click{position:relative;z-index:2;width:145px;height:145px;border-radius:50%;border:7px solid rgba(218,195,148,.27);background:radial-gradient(circle at 35% 30%,#d7c18f,#a88e58);color:#1b362b;font-size:13px;font-weight:800;box-shadow:0 12px 28px rgba(0,0,0,.25),inset 0 2px 7px rgba(255,255,255,.45);transition:transform .1s}.tasbeeh-click:active{transform:scale(.96)}.tasbeeh-actions{display:flex;justify-content:center;gap:10px;margin-top:20px}.outline-light{border:1px solid rgba(255,255,255,.2);background:transparent;color:#d5ded8;border-radius:10px;padding:8px 15px;font-size:9px}.tasbeeh-presets{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0}.preset{border:1px solid var(--line);border-radius:20px;padding:7px 12px;background:#fffefa;color:#66736a;font-size:9px}.preset.active{background:#eaf0e8;border-color:#d2e0d3;color:#315c45}
+    .settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.setting-card{padding:20px}.setting-card h3{font-size:12px;margin:0 0 4px}.setting-card>p{font-size:9px;color:var(--muted);margin:0 0 16px}.setting-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid #f0efe9}.setting-row:first-of-type{border-top:0}.setting-row b{display:block;font-size:9px}.setting-row span{display:block;font-size:8px;color:#929a93;margin-top:2px}.switch{position:relative;width:38px;height:22px;flex:0 0 auto}.switch input{opacity:0;width:0;height:0}.slider{position:absolute;inset:0;border-radius:20px;background:#d9ddd8;transition:.2s}.slider:before{content:"";position:absolute;width:16px;height:16px;right:3px;top:3px;background:white;border-radius:50%;transition:.2s;box-shadow:0 1px 3px #0002}.switch input:checked+.slider{background:#4f8168}.switch input:checked+.slider:before{transform:translateX(-16px)}.field{display:flex;align-items:center;gap:8px;margin-top:8px}.field input,.field select{width:100%;min-width:0;border:1px solid #e5e4dc;background:#fffefa;border-radius:10px;padding:10px 11px;color:#3d4c43;font-size:9px;outline:none}.field input:focus,.field select:focus{border-color:#a99465}.primary-btn{border:0;background:var(--forest);color:#e9d8ae;border-radius:10px;padding:10px 14px;font-size:9px;font-weight:700;white-space:nowrap}.secondary-btn{border:1px solid #e5e1d5;background:#fffefa;color:#5f6b62;border-radius:10px;padding:9px 13px;font-size:9px;white-space:nowrap}.setting-note{padding:10px 12px;border-radius:10px;background:#f3f1e9;color:#85877d;font-size:8px;margin-top:11px}.cordova-health-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.cordova-health-actions button{min-height:40px}.cordova-health-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.cordova-health-item{min-width:0;border:1px solid var(--line);border-radius:11px;padding:10px;background:var(--soft)}.cordova-health-item b{display:block;font-size:9px;color:var(--ink);margin-bottom:5px}.cordova-health-item small{display:block;font-size:8px;line-height:1.6;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}.health-badge{display:inline-flex;align-items:center;border-radius:20px;padding:3px 8px;font-size:8px;font-weight:700}.health-ok{background:#e4f1e8;color:#2f7049}.health-warn{background:#fff1d8;color:#8b641e}.health-bad{background:#f8e5e2;color:#a64f45}.health-neutral{background:#e9ece9;color:#68736b}.cordova-health-empty{grid-column:1/-1;padding:12px;border-radius:10px;background:var(--soft);color:var(--muted);font-size:8px;line-height:1.7}.version-status{font-size:9px;color:#829087;margin-top:10px;min-height:18px}.danger-btn{border:1px solid #ecd8d4;color:#a35e55;background:#fff9f7;border-radius:10px;padding:9px 12px;font-size:9px}
+    .overlay{position:fixed;inset:0;background:rgba(13,28,23,.42);backdrop-filter:blur(4px);z-index:50;display:none;justify-content:flex-start}.overlay.open{display:flex}.drawer{width:min(390px,100%);height:100%;background:#fbfaf6;padding:25px 21px;overflow:auto;box-shadow:12px 0 45px #0002;animation:slide .25s ease}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.modal-head h2{font-size:16px;margin:0}.close-btn{border:0;background:#eeeee8;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#59665d}.close-btn svg{width:16px}.notice-item{padding:13px 0;border-bottom:1px solid #eeede6;display:flex;gap:11px}.notice-icon{height:34px;width:34px;border-radius:11px;background:#edf2eb;color:#4d795f;display:grid;place-items:center;flex:0 0 auto}.notice-icon svg{width:16px}.notice-item b{font-size:10px;display:block}.notice-item p{font-size:9px;color:#828c84;margin:3px 0}.notice-item time{font-size:8px;color:#a2a89f}.empty-state{text-align:center;color:#929a92;padding:45px 10px;font-size:10px}.toast{position:fixed;bottom:25px;left:25px;z-index:80;background:#183c31;color:white;border:1px solid rgba(255,255,255,.1);padding:11px 16px;border-radius:12px;box-shadow:0 12px 35px #102c2530;font-size:10px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:none}.mobile-nav{display:none}
+    @keyframes slide{from{transform:translateX(-20px);opacity:.7}to{transform:none;opacity:1}}
+    @media(max-width:1100px){.dashboard-grid,.tasks-layout{grid-template-columns:1fr}.side-stack{grid-template-columns:1fr 1fr}.achievement-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){.sidebar{display:none}.main{margin:0;width:100%;padding:20px 16px 100px}.topbar{margin-bottom:20px}.location-pill{padding:8px 10px}.hero{padding:24px 20px;min-height:190px;border-radius:21px}.hero-progress{width:100px;height:100px;flex-basis:100px;margin-left:0}.hero-progress strong{font-size:20px}.hero h2{font-size:19px}.hero p{font-size:9px}.dashboard-grid,.tasks-layout{grid-template-columns:1fr}.side-stack{grid-template-columns:1fr 1fr}.prayer-card{padding:16px 12px}.prayer-list{gap:5px}.prayer-item{padding:9px 1px}.prayer-item b{font-size:8px}.prayer-item span{font-size:8px}.section-head{margin-top:20px}.task-card{padding:15px}.settings-grid{grid-template-columns:1fr}.achievement-grid{grid-template-columns:repeat(2,1fr)}.mobile-nav{position:fixed;z-index:30;display:flex;bottom:0;right:0;left:0;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(255,254,250,.94);backdrop-filter:blur(18px);border-top:1px solid #e9e7df;justify-content:space-around}.mobile-nav button{border:0;background:transparent;color:#9aa198;display:grid;justify-items:center;gap:2px;font-size:8px;padding:5px 9px;min-width:58px}.mobile-nav button svg{width:19px;height:19px}.mobile-nav button.active{color:#315e48}.mobile-nav button.active svg{stroke-width:2.4}.top-actions{gap:7px}.icon-btn{height:39px;width:39px}.date-label{font-size:9px}.achievement-summary{padding:18px}.achievement-number{font-size:27px}}
+    @media(max-width:390px){.side-stack{grid-template-columns:1fr}.hero-progress{width:82px;height:82px;flex-basis:82px}.hero h2{font-size:17px}.hero p{font-size:8px}.hero-button{padding:8px 10px}.prayer-item b{font-size:7px}.prayer-item span{font-size:7px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+    /* Visual refinement: consistent controls, responsive spacing and calmer motion */
+    :root{--control-h:44px;--focus:rgba(200,169,106,.38)}
+    html{scroll-padding-top:18px}
+    body{min-width:320px;-webkit-tap-highlight-color:transparent}
+    button{min-width:0;touch-action:manipulation}
+    button:focus-visible,input:focus-visible,select:focus-visible,.task-row:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+    .main{max-width:1700px;margin-right:248px}
+    .icon-btn{width:44px;height:44px;flex:0 0 44px}
+    .hero-button,.primary-btn,.secondary-btn,.danger-btn{min-height:var(--control-h);display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 15px;font-size:11px;line-height:1.35}
+    .text-link{min-height:38px;padding:8px 10px}
+    .bonus-action{min-height:44px;padding:10px 13px;font-size:10px}
+    .setting-row{min-height:58px;gap:14px}
+    .setting-row>div{min-width:0;flex:1}
+    .setting-row select,.setting-row input{max-width:min(48%,220px);min-height:42px;padding:8px 10px!important;font-size:11px!important;border-radius:11px!important}
+    .field{align-items:stretch;flex-wrap:wrap}
+    .field input{min-height:44px;font-size:12px;padding:10px 12px}
+    .field button{flex:1 1 auto;min-height:44px}
+    .prayer-list{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+    .prayer-item{min-height:86px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 4px}
+    .prayer-item b,.prayer-item span{font-size:10px}
+    .task-row{min-height:58px;padding:12px 13px;gap:12px}
+    .task-check{width:23px;height:23px}
+    .task-info b{font-size:11px}.task-info span{font-size:9px}.task-side{font-size:9px}
+    .page{animation:pageIn .18s ease-out}.page.active{animation:pageIn .18s ease-out}
+    @keyframes pageIn{from{opacity:.72}to{opacity:1}}
+    .card,.setting-card,.icon-btn,.nav-btn,.task-row,.hero-button,.primary-btn,.secondary-btn,.danger-btn,.mobile-nav button{transition:background-color .18s ease,border-color .18s ease,color .18s ease,box-shadow .18s ease,transform .12s ease}
+    .hero-button:active,.primary-btn:active,.secondary-btn:active,.icon-btn:active,.mobile-nav button:active{transform:scale(.97)}
+    .mobile-nav button{min-height:52px;min-width:0;flex:1;padding:6px 5px 4px;font-size:9px}
+    .mobile-nav button svg{width:20px;height:20px}
+    .location-pill{min-width:0;max-width:240px;min-height:42px}
+    .location-pill span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .top-actions{min-width:0;flex-wrap:nowrap}
+    .drawer{max-width:100%;}
+    .notice-item{gap:12px}
+    .notice-item>div:last-child{min-width:0}
+    .settings-grid{align-items:start}
+    .appearance-card{grid-column:1/-1}
+    .web2app-readiness .setting-note{margin-top:10px}.web2app-readiness p{margin-bottom:12px}
+    .setting-note{font-size:9px;line-height:1.8}
+
+    /* Dark theme palette */
+    html[data-theme="dark"]{color-scheme:dark;--ink:#e7eee9;--muted:#9baaa1;--paper:#101916;--white:#19241f;--line:#2b3931;--green:#8bb89a;--green-soft:#24382e;--gold-soft:#433b2d;--shadow:0 16px 45px rgba(0,0,0,.22)}
+    html[data-theme="dark"] body{background:var(--paper);color:var(--ink)}
+    html[data-theme="dark"] .welcome h1,html[data-theme="dark"] .section-head h3,html[data-theme="dark"] .page-heading h1{color:#e7eee9}
+    html[data-theme="dark"] .card{background:#19241f;border-color:#2b3931;box-shadow:0 8px 25px rgba(0,0,0,.12)}
+    html[data-theme="dark"] .icon-btn,html[data-theme="dark"] .location-pill{background:#1b2821;border-color:#34453a;color:#c2d0c6}
+    html[data-theme="dark"] .icon-btn:hover{border-color:#8e794e;color:#f0d9a8}
+    html[data-theme="dark"] .card-title .symbol,html[data-theme="dark"] .notice-icon{background:#263a2f;color:#a8c9ae}
+    html[data-theme="dark"] .subtle-tag{background:#393426;color:#d9c38f}
+    html[data-theme="dark"] .next-prayer{background:#22332a}
+    html[data-theme="dark"] .next-prayer b,html[data-theme="dark"] .countdown strong{color:#d8e8dc}
+    html[data-theme="dark"] .next-prayer small,html[data-theme="dark"] .countdown span{color:#a5b5aa}
+    html[data-theme="dark"] .prayer-item{background:#1b2821;border-color:#344238;color:#e2ebe4}
+    html[data-theme="dark"] .prayer-item.active{background:#315b47;border-color:#47775c}
+    html[data-theme="dark"] .prayer-item span{color:#aab9ae}
+    html[data-theme="dark"] .prayer-item.active span{color:#edf5ef}
+    html[data-theme="dark"] .prayer-foot{color:#9aa99f}
+    html[data-theme="dark"] .prayer-foot button,html[data-theme="dark"] .text-link{color:#d0b77e}
+    html[data-theme="dark"] .stats-line{background:#344238}
+    html[data-theme="dark"] .stat-row{color:#a3b0a7}
+    html[data-theme="dark"] .stat-row b,html[data-theme="dark"] .mini-stats strong{color:#e0e9e2}
+    html[data-theme="dark"] .streak-card{background:#302d23;border-color:#4a4230}
+    html[data-theme="dark"] .streak-icon{background:#51452e;color:#e0c78e}
+    html[data-theme="dark"] .streak-card strong{color:#e6d7b4}
+    html[data-theme="dark"] .streak-card span{color:#b9a77b}
+    html[data-theme="dark"] .task-group-title{color:#b8c9bd}
+    html[data-theme="dark"] .task-row{background:#1b2821;border-color:#303e35}
+    html[data-theme="dark"] .task-row:hover{background:#22332a;border-color:#526b5a}
+    html[data-theme="dark"] .task-row.done{background:#203329;border-color:#365642}
+    html[data-theme="dark"] .task-info b{color:#e0e9e2}
+    html[data-theme="dark"] .task-info span{color:#a3b1a8}
+    html[data-theme="dark"] .task-side{color:#d2bd8b}
+    html[data-theme="dark"] .task-check{border-color:#59665d}
+    html[data-theme="dark"] .task-row.done .task-info b{color:#aab9ae}
+    html[data-theme="dark"] .task-bonus{background:#29291f;border-color:#45402f}
+    html[data-theme="dark"] .task-bonus h4{color:#e7dfc9}
+    html[data-theme="dark"] .task-bonus p{color:#b1b0a2}
+    html[data-theme="dark"] .bonus-action{background:#343126;border-color:#5a513b;color:#e4d5ae}
+    html[data-theme="dark"] .mini-tasbeeh .counter{color:#d8e8dc}
+    html[data-theme="dark"] .achievement-icon{background:#302f26;color:#d5bd86}
+    html[data-theme="dark"] .achievement p{color:#aab5ad}
+    html[data-theme="dark"] .achievement progress::-webkit-progress-bar{background:#354139}
+    html[data-theme="dark"] .setting-row{border-color:#303e35}
+    html[data-theme="dark"] .setting-row span{color:#aab6ad}
+    html[data-theme="dark"] .setting-row select,html[data-theme="dark"] .field input,html[data-theme="dark"] .field select{background:#121d18!important;border-color:#3a4b40!important;color:#e2ebe4!important}
+    html[data-theme="dark"] .setting-note{background:#242f28;color:#adb9b0}
+    html[data-theme="dark"] .secondary-btn{background:#26352c;border-color:#46564a;color:#d7e1d9}
+    html[data-theme="dark"] .danger-btn{background:#352523;border-color:#65403b;color:#e4a59b}
+    html[data-theme="dark"] .drawer{background:#17221c;color:#e7eee9}
+    html[data-theme="dark"] .close-btn{background:#2c3931;color:#d4dfd7}
+    html[data-theme="dark"] .notice-item{border-color:#344238}
+    html[data-theme="dark"] .notice-item p{color:#b0bcb3}
+    html[data-theme="dark"] .notice-item time{color:#87968c}
+    html[data-theme="dark"] .mobile-nav{background:rgba(22,33,27,.96);border-color:#344238}
+    html[data-theme="dark"] .mobile-nav button{color:#9aa99f}
+    html[data-theme="dark"] .mobile-nav button.active{color:#d8c18b}
+    html[data-theme="dark"] .mini-ring svg circle:first-child{stroke:#344238}
+    html[data-theme="dark"] .setting-card h3{color:#e7eee9}
+    html[data-theme="dark"] .setting-card>p{color:#aab6ad}
+    html[data-theme="dark"] .empty-state{color:#aab6ad}
+
+    @media(max-width:760px){
+      .main{padding:15px 13px calc(94px + env(safe-area-inset-bottom));}
+      .topbar{align-items:flex-start;gap:8px;margin-bottom:17px}
+      .date-label{max-width:35%;flex:1;min-width:0;line-height:1.65;align-items:flex-start;padding-top:9px}
+      .top-actions{gap:6px}
+      .icon-btn{width:40px;height:40px;flex-basis:40px;border-radius:12px}
+      .location-pill{max-width:22vw;font-size:9px;padding:7px 8px}
+      .welcome{margin-bottom:15px}.welcome h1{font-size:21px}.welcome p{font-size:12px}
+      .hero{padding:19px 16px;min-height:176px;gap:8px;border-radius:20px;margin-bottom:16px}
+      .hero-content{min-width:0}.hero h2{font-size:18px;line-height:1.55}.hero p{font-size:10px;line-height:1.8;margin-bottom:12px}
+      .hero-progress{margin:0;width:88px;height:88px;flex-basis:88px}
+      .hero-progress svg{width:88px;height:88px}.hero-progress strong{font-size:19px}.hero-progress small{font-size:8px}
+      .hero-button{min-height:40px;padding:9px 11px;font-size:10px}
+      .dashboard-grid,.tasks-layout{grid-template-columns:minmax(0,1fr);gap:13px}
+      .side-stack{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+      .progress-card{padding:14px}.streak-card{padding:13px;min-width:0}.streak-card strong{font-size:10px}.streak-card span{font-size:8px}
+      .prayer-card{padding:15px 12px}.prayer-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+      .prayer-item{min-height:78px;padding:8px 4px}.prayer-item b,.prayer-item span{font-size:10px}
+      .prayer-foot{align-items:flex-start;font-size:9px;line-height:1.6}.prayer-foot button{font-size:10px;white-space:nowrap}
+      .section-head{margin:19px 0 10px;align-items:center}.section-head h3{font-size:14px}.section-head p{font-size:10px}
+      .task-card{padding:13px}.task-row{min-height:58px;padding:11px 10px}.task-info b{font-size:11px}.task-info span{font-size:9px}
+      .settings-grid{grid-template-columns:minmax(0,1fr);gap:12px}.appearance-card{grid-column:auto}.setting-card{padding:15px}
+      .setting-row{flex-wrap:wrap;padding:12px 0;min-height:0}.setting-row>div{flex-basis:100%}.setting-row select{max-width:100%;width:100%}
+      .field{gap:8px}.field button{flex:1 1 42%;font-size:10px;padding:9px 10px}
+      .page-heading{margin-bottom:16px}.page-heading h1{font-size:22px}
+      .achievement-grid{gap:9px}.achievement{padding:13px 10px}
+      .tasbeeh-card{padding:24px 16px}.tasbeeh-count{font-size:54px}.tasbeeh-click{width:132px;height:132px}
+      .mobile-nav{padding:6px 8px calc(6px + env(safe-area-inset-bottom));gap:3px}
+      .mobile-nav button{font-size:8px;min-height:50px}
+    }
+    @media(max-width:380px){
+      .main{padding-right:10px;padding-left:10px}
+      .date-label{font-size:8px;max-width:40%}
+      .location-pill{max-width:21vw}
+      .top-actions{gap:4px}.icon-btn{width:37px;height:37px;flex-basis:37px}
+      .hero{padding:16px 13px}.hero-progress{width:76px;height:76px;flex-basis:76px}.hero-progress svg{width:76px;height:76px}
+      .hero h2{font-size:16px}.hero p{font-size:9px}.hero-button{font-size:9px;padding:8px}
+      .side-stack{grid-template-columns:1fr}
+      .prayer-card{padding:13px 9px}
+      .prayer-item{min-height:72px}.prayer-item b,.prayer-item span{font-size:9px}
+      .prayer-foot{flex-direction:column;gap:4px}
+      .mobile-nav button{font-size:8px;padding-inline:2px}
+    }
+    @media(prefers-reduced-motion:reduce){.page{animation:none!important}.card,.setting-card,.icon-btn,.nav-btn,.task-row,.hero-button,.primary-btn,.secondary-btn,.danger-btn,.mobile-nav button{transition:none!important}}
+
+
+    /* Critical mobile layout repair: keep the desktop sidebar offset off phones.
+       This block is intentionally last so it wins over all earlier .main rules. */
+    @media (max-width:760px){
+      html,body{width:100%;max-width:100%;overflow-x:clip}
+      .app{display:block;width:100%;max-width:100%;min-width:0;overflow-x:clip}
+      .sidebar{display:none!important}
+      .main{
+        display:block;
+        width:100%!important;
+        max-width:none!important;
+        min-width:0;
+        margin:0!important;
+        padding:15px 13px calc(96px + env(safe-area-inset-bottom));
+      }
+      .topbar{width:100%;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:8px}
+      .date-label{flex:0 1 auto;max-width:38%;min-width:0;white-space:normal;overflow-wrap:anywhere}
+      .top-actions{flex:0 0 auto;min-width:0;gap:6px}
+      .location-pill{max-width:112px;min-width:0;flex:0 1 auto}
+      .dashboard-grid,.tasks-layout{width:100%;min-width:0}
+      .hero,.card,.setting-card,.achievement-summary{max-width:100%;min-width:0}
+      .mobile-nav{right:0!important;left:0!important;width:100%!important;max-width:100vw}
+    }
+    @media (max-width:390px){
+      .main{padding-right:10px;padding-left:10px}
+      .topbar{gap:5px}
+      .date-label{max-width:34%;font-size:8px}
+      .top-actions{gap:4px}
+      .location-pill{max-width:76px;padding:7px 6px}
+    }
+
+
+
+    /* Compact, consistent controls: prevent flex/grid stretching on mobile */
+    button{
+      box-sizing:border-box;
+      line-height:1.35;
+      vertical-align:middle;
+    }
+    .hero-button,
+    .primary-btn,
+    .secondary-btn,
+    .danger-btn,
+    .bonus-action,
+    .outline-light{
+      min-height:36px !important;
+      height:38px !important;
+      max-height:40px !important;
+      padding:7px 12px !important;
+      font-size:10px !important;
+      line-height:1.25 !important;
+      flex:0 0 auto;
+      align-self:center;
+      white-space:nowrap;
+    }
+    .hero-button{height:36px !important;min-height:36px !important;padding:7px 12px !important}
+    .bonus-action{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      border-radius:10px;
+      white-space:normal;
+      text-align:right;
+      flex:0 0 40px;
+      height:40px !important;
+      min-height:40px !important;
+      max-height:40px !important;
+    }
+    .bonus-action svg{width:14px;height:14px;flex:0 0 14px}
+    .text-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:30px !important;
+      height:auto !important;
+      max-height:36px;
+      padding:5px 8px !important;
+      font-size:9px !important;
+      line-height:1.25;
+      white-space:nowrap;
+    }
+    .field{
+      display:flex;
+      align-items:center !important;
+      align-content:center;
+      flex-wrap:wrap;
+      gap:8px;
+      min-height:0;
+      height:auto;
+    }
+    .field input,.field select{
+      min-height:38px !important;
+      height:38px !important;
+      max-height:40px;
+      padding:7px 10px !important;
+      font-size:10px !important;
+      line-height:1.3;
+    }
+    .field button{
+      flex:1 1 120px !important;
+      width:auto;
+      min-width:0;
+      min-height:38px !important;
+      height:38px !important;
+      max-height:40px !important;
+      padding:7px 10px !important;
+      align-self:center !important;
+      font-size:10px !important;
+      white-space:nowrap;
+    }
+    .setting-row{min-height:48px;gap:10px}
+    .setting-row .secondary-btn,.setting-row .danger-btn{
+      flex:0 0 auto;
+      width:auto;
+      min-width:0;
+      min-height:34px !important;
+      height:36px !important;
+      max-height:36px !important;
+      padding:6px 10px !important;
+      font-size:9px !important;
+    }
+    .icon-btn{
+      width:38px;
+      height:38px;
+      min-height:38px;
+      max-height:38px;
+      flex:0 0 38px;
+      border-radius:12px;
+    }
+    .close-btn{
+      width:32px;
+      height:32px;
+      min-height:32px;
+      max-height:32px;
+      padding:0;
+      flex:0 0 32px;
+    }
+    .round-add{
+      width:34px;
+      height:34px;
+      min-height:34px;
+      max-height:34px;
+      flex:0 0 34px;
+    }
+    .preset{
+      min-height:30px;
+      height:32px;
+      max-height:34px;
+      padding:5px 10px;
+      font-size:9px;
+      line-height:1.2;
+    }
+    .outline-light{height:36px !important;min-height:36px !important;max-height:36px !important}
+    .tasbeeh-click{
+      width:128px;
+      height:128px;
+      min-height:128px;
+      max-height:128px;
+      padding:0;
+      flex:0 0 128px;
+    }
+    .mobile-nav button{
+      min-height:46px !important;
+      height:auto !important;
+      max-height:50px;
+      padding:5px 4px 3px !important;
+      font-size:8px !important;
+      line-height:1.25;
+    }
+    .mobile-nav button svg{width:19px;height:19px}
+    .prayer-foot button{
+      min-height:28px !important;
+      height:30px !important;
+      max-height:32px !important;
+      padding:4px 7px !important;
+      font-size:9px !important;
+      line-height:1.2;
+    }
+    .nav-btn{
+      min-height:40px;
+      height:40px;
+      padding:8px 12px;
+      font-size:10px;
+    }
+    .task-row{min-height:52px;padding:9px 11px}
+    .task-check{width:21px;height:21px}
+
+    @media(max-width:760px){
+      .hero-button{height:36px !important;min-height:36px !important}
+      .field{flex-wrap:wrap;align-items:center !important}
+      .field button{flex:1 1 125px !important;height:38px !important;min-height:38px !important;max-height:40px !important}
+      .setting-row{min-height:0;padding:10px 0;gap:9px}
+      .setting-row .secondary-btn,.setting-row .danger-btn{height:34px !important;min-height:34px !important;max-height:34px !important}
+      .mobile-nav button{min-height:46px !important;max-height:48px}
+      .tasbeeh-click{width:120px;height:120px;min-height:120px;max-height:120px;flex-basis:120px}
+    }
+    @media(max-width:390px){
+      .field button{flex-basis:115px !important;font-size:9px !important;padding-inline:7px !important}
+      .bonus-action{font-size:9px !important;padding-inline:10px !important}
+      .text-link{font-size:8px !important;padding-inline:6px !important}
+    }
+
+
+
+    /* Header sizing repair: SVGs without explicit heights were expanding their
+       flex containers. Keep header icons and controls on a compact, aligned row. */
+    .date-label,
+    .location-pill,
+    .top-actions,
+    .topbar { min-height: 0; }
+    .date-label svg {
+      display:block;
+      width:15px;
+      height:15px;
+      flex:0 0 15px;
+    }
+    .location-pill svg {
+      display:block;
+      width:14px;
+      height:14px;
+      flex:0 0 14px;
+    }
+    .hero-button svg,
+    .streak-icon svg,
+    .close-btn svg,
+    .notice-icon svg,
+    .round-add svg {
+      display:block;
+      height:1em;
+      flex-shrink:0;
+    }
+    .hero-button svg{width:14px;height:14px}
+    .streak-icon svg{width:19px;height:19px}
+    .close-btn svg{width:16px;height:16px}
+    .notice-icon svg{width:16px;height:16px}
+    .round-add svg{width:16px;height:16px}
+
+    @media (max-width:760px){
+      .topbar{
+        display:grid;
+        grid-template-columns:minmax(0,1fr) auto;
+        align-items:center;
+        justify-content:normal;
+        gap:8px;
+        width:100%;
+        min-height:38px;
+        margin-bottom:18px;
+      }
+      .date-label{
+        display:flex;
+        align-items:center !important;
+        justify-content:flex-start;
+        direction:rtl;
+        gap:6px;
+        flex:0 1 auto;
+        width:auto;
+        max-width:none;
+        min-width:0;
+        padding:0 !important;
+        white-space:nowrap;
+        overflow:hidden;
+        font-size:9px;
+        line-height:1.4;
+      }
+      .date-label span{
+        display:block;
+        min-width:0;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+      .date-label svg{
+        width:14px;
+        height:14px;
+        flex:0 0 14px;
+      }
+      .top-actions{
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
+        gap:5px;
+        width:auto;
+        min-width:0;
+        flex:0 0 auto;
+      }
+      .location-pill{
+        display:flex;
+        align-items:center;
+        gap:5px;
+        width:auto;
+        min-width:0;
+        max-width:94px;
+        height:34px;
+        min-height:34px;
+        max-height:34px;
+        flex:0 1 94px;
+        padding:5px 7px;
+        border-radius:10px;
+        font-size:8px;
+        line-height:1.2;
+        overflow:hidden;
+        white-space:nowrap;
+      }
+      .location-pill span{
+        display:block;
+        min-width:0;
+        flex:1 1 auto;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+      .location-pill svg{
+        width:13px;
+        height:13px;
+        flex:0 0 13px;
+      }
+      .top-actions .icon-btn{
+        width:34px;
+        height:34px;
+        min-width:34px;
+        min-height:34px;
+        max-width:34px;
+        max-height:34px;
+        flex:0 0 34px;
+        border-radius:10px;
+        padding:0;
+      }
+      .top-actions .icon-btn svg{width:16px;height:16px}
+    }
+    @media (max-width:390px){
+      .topbar{gap:6px}
+      .date-label{font-size:8px;gap:5px}
+      .location-pill{max-width:78px;flex-basis:78px;padding-inline:6px}
+      .top-actions{gap:4px}
+      .top-actions .icon-btn{
+        width:32px;height:32px;min-width:32px;min-height:32px;
+        max-width:32px;max-height:32px;flex-basis:32px;
+      }
+    }
+    @media (max-width:340px){
+      .location-pill{max-width:66px;flex-basis:66px}
+      .top-actions .icon-btn{
+        width:30px;height:30px;min-width:30px;min-height:30px;
+        max-width:30px;max-height:30px;flex-basis:30px;
+      }
+    }
+
+
+    /* Worship-focused information architecture and compact components */
+    .home-worship-card{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 19px;margin-bottom:22px}
+    .home-worship-copy{display:grid;gap:3px;min-width:0}
+    .home-worship-kicker,.worship-overline{font-size:8px;color:#a18a59;letter-spacing:.6px;font-weight:700}
+    .home-worship-copy strong{font-size:12px;color:#30453a}
+    .home-worship-copy>span:last-child{font-size:9px;color:var(--muted)}
+    .home-worship-card .primary-btn svg{width:13px;height:13px}
+    .worship-overview{padding:17px 19px;margin-bottom:17px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+    .worship-overview>div:first-child{display:grid;gap:2px}
+    .worship-overview strong{font-size:17px;color:#314b3b}
+    .worship-overview small{font-size:8px;color:var(--muted)}
+    .worship-progress-track{height:7px;border-radius:20px;background:#e9eee8;overflow:hidden}
+    .worship-progress-track span{display:block;width:0;height:100%;border-radius:20px;background:linear-gradient(90deg,#39755a,#c8a96a);transition:width .25s ease}
+    .worship-date{font-size:8px;color:#8a7955;background:#f6f0e3;border-radius:20px;padding:5px 8px;white-space:nowrap}
+    .worship-side-stack{display:grid;gap:13px}
+    .fasting-card{padding:16px}
+    .fasting-card .fasting-log-btn{width:100%;margin:2px 0 8px}
+    .fasting-log-btn.is-complete{background:#e6f0e8;border-color:#c8ddcd;color:#2c684b}
+    .habit-tools{padding:17px;margin-top:16px}
+    .habit-tools-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .habit-tools h3{font-size:12px;margin:0}
+    .habit-tools p{font-size:9px;color:var(--muted);margin:3px 0 0}
+    .habit-settings-panel{margin-top:13px;padding-top:12px;border-top:1px solid var(--line)}
+    .habit-settings-note{margin:0 0 9px!important}
+    .habit-setting-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 2px;border-bottom:1px solid var(--line);font-size:10px}
+    .habit-setting-row input{width:18px;height:18px;accent-color:#3d775e;flex:0 0 auto}
+    .custom-habit-form{display:flex;gap:8px;margin-top:13px}
+    .custom-habit-form input{min-width:0;flex:1;border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:10px;padding:8px 11px;font-size:10px;outline:none}
+    .custom-habit-form input:focus{border-color:#a99465}
+    html[data-theme="dark"] .home-worship-copy strong,html[data-theme="dark"] .worship-overview strong{color:#e0e9e2}
+    html[data-theme="dark"] .worship-progress-track{background:#344238}
+    html[data-theme="dark"] .worship-date{background:#393426;color:#d9c38f}
+    html[data-theme="dark"] .fasting-log-btn.is-complete{background:#263d30;border-color:#40634c;color:#b9dfc2}
+    html[data-theme="dark"] .habit-setting-row{border-color:#344238}
+    html[data-theme="dark"] .custom-habit-form input{background:#121d18;border-color:#3a4b40;color:#e2ebe4}
+    @media(max-width:760px){
+      .home-worship-card{align-items:flex-start;flex-direction:column;padding:15px;gap:10px}
+      .home-worship-card .primary-btn{width:100%}
+      .worship-overview{grid-template-columns:1fr auto;gap:9px;padding:14px}
+      .worship-progress-track{grid-column:1/-1;grid-row:2}
+      .worship-date{grid-column:2;grid-row:1}
+      .custom-habit-form{flex-direction:column}
+      .custom-habit-form .primary-btn{width:100%}
+      .worship-side-stack{grid-template-columns:1fr}
+    }
+
+
+    /* Customizable reminder center */
+    .reminder-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+    .reminder-option{min-width:0;border:1px solid var(--line);border-radius:14px;background:var(--paper);padding:12px}
+    .reminder-option-head{display:flex;align-items:flex-start;justify-content:space-between;gap:9px;min-height:43px}
+    .reminder-option-head>div{min-width:0}
+    .reminder-option-head b{display:block;font-size:10px;color:var(--ink);line-height:1.6}
+    .reminder-option-head span{display:block;font-size:8px;color:var(--muted);line-height:1.7;margin-top:2px}
+    .reminder-option .switch{margin-top:2px}
+    .reminder-control{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding-top:9px;margin-top:9px}
+    .reminder-control label{font-size:8px;color:var(--muted);white-space:nowrap}
+    .reminder-control input[type=time],.reminder-control select{width:112px;max-width:54%;min-width:0;border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:9px;padding:7px 8px;font:inherit;font-size:10px;min-height:34px;color-scheme:light}
+    .time-display-shell{position:relative;display:inline-flex;align-items:center;justify-content:center;width:112px;max-width:54%;min-width:0;min-height:34px;border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:9px;overflow:hidden;flex:0 0 auto}
+    .time-display-value{display:block;width:100%;padding:7px 8px;text-align:center;font-size:10px;font-weight:600;line-height:1.5;font-variant-numeric:tabular-nums;pointer-events:none;white-space:nowrap}
+    .time-display-shell input[type=time]{position:absolute!important;inset:0;width:100%!important;height:100%!important;max-width:none!important;min-height:100%!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;opacity:0;cursor:pointer;z-index:2;color-scheme:light}
+    .time-display-shell:focus-within{outline:2px solid var(--green);outline-offset:2px}
+    .custom-reminder-form .time-display-shell{width:100%;max-width:none;min-height:36px}
+    .custom-reminder-form .time-display-value{font-size:9px}
+
+    html[data-theme="dark"] .reminder-control input[type=time],html[data-theme="dark"] .reminder-control select,html[data-theme="dark"] .time-display-shell input[type=time]{color-scheme:dark}
+    html[data-theme="dark"] .time-display-shell{background:#121d18;border-color:#3a4b40;color:#e2ebe4}
+    .reminder-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
+    .reminder-actions button{min-height:39px;font-size:9px}
+    @media(max-width:760px){.cordova-health-results{grid-template-columns:1fr}.cordova-health-actions button{flex:1 1 100%}.reminder-options{grid-template-columns:minmax(0,1fr);gap:8px}.reminder-option{padding:11px 12px}.reminder-option-head{min-height:38px}.reminder-control input[type=time],.reminder-control select,.reminder-control .time-display-shell{width:132px;max-width:52%}.reminder-actions button{flex:1 1 45%}}
+
+    .reminder-intro{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:11px;background:var(--soft);color:var(--muted);font-size:9px;line-height:1.8;margin:12px 0 4px}
+    .prayer-picks{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-start;width:100%;margin-top:8px}
+    .prayer-pick{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:6px 9px;background:var(--soft);color:var(--ink);font-size:8px;cursor:pointer}
+    .prayer-pick input{accent-color:var(--forest);width:13px;height:13px;margin:0}
+    .reminder-control.stack{display:block}
+    .reminder-control.stack>label{display:block;margin-bottom:7px}
+    .reminder-control.stack .prayer-picks{margin-top:0}
+    .custom-reminder-panel{margin-top:13px;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+    .custom-reminder-panel h4{margin:0 0 4px;color:var(--ink);font-size:10px}
+    .custom-reminder-panel>p{margin:0 0 11px;color:var(--muted);font-size:8px;line-height:1.7}
+    .custom-reminder-form{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(100px,.8fr) minmax(120px,1fr) auto;gap:7px;align-items:center}
+    .custom-reminder-form input,.custom-reminder-form select{width:100%;min-width:0;border:1px solid var(--line);border-radius:9px;background:var(--white);color:var(--ink);padding:8px 9px;font:inherit;font-size:9px;min-height:36px}
+    .custom-reminder-form button{min-height:36px;padding:8px 12px}
+    .custom-reminder-list{display:grid;gap:7px;margin-top:11px}
+    .custom-reminder-item{display:flex;align-items:center;gap:9px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--white)}
+    .custom-reminder-info{flex:1;min-width:0}
+    .custom-reminder-info b{display:block;color:var(--ink);font-size:9px;overflow-wrap:anywhere}
+    .custom-reminder-info span{display:block;color:var(--muted);font-size:8px;margin-top:3px}
+    .custom-reminder-item button{border:1px solid var(--line);border-radius:8px;background:var(--soft);color:var(--muted);padding:5px 8px;font-size:8px}
+    .custom-reminder-item button.delete{color:#b56b62}
+    .custom-reminder-empty{padding:10px;text-align:center;color:var(--muted);font-size:8px;border:1px dashed var(--line);border-radius:9px}
+    @media(max-width:760px){.custom-reminder-form{grid-template-columns:1fr 1fr}.custom-reminder-form input:first-child{grid-column:1/-1}.custom-reminder-form button{grid-column:1/-1;width:100%}.reminder-control.stack .prayer-picks{gap:5px}.prayer-pick{padding:6px 8px}}
+
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <symbol id="i-mark" viewBox="0 0 24 24"><path d="M12 2.7c2.4 3.2 6.8 5.1 6.8 10a6.8 6.8 0 1 1-13.6 0c0-4.9 4.4-6.8 6.8-10Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 8.2c-1.8 2.1-2.6 3.4-2.6 5.1a2.6 2.6 0 0 0 5.2 0c0-1.7-.8-3-2.6-5.1Z" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 3v4M17 3v4M3 10h18" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m8.5 12-1 9 4.5-2.5 4.5 2.5-1-9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m19.4 13.5 1.1.9-1.7 3-1.4-.5a7.8 7.8 0 0 1-1.7 1l-.3 1.5h-3.5l-.3-1.5a7.8 7.8 0 0 1-1.7-1l-1.4.5-1.7-3 1.1-.9a7.3 7.3 0 0 1 0-2l-1.1-.9 1.7-3 1.4.5a7.8 7.8 0 0 1 1.7-1l.3-1.5h3.5l.3 1.5a7.8 7.8 0 0 1 1.7 1l1.4-.5 1.7 3-1.1.9a7.3 7.3 0 0 1 0 2Z" transform="translate(-1 -1)" fill="none" stroke="currentColor" stroke-width="1.1"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5Zm0 0v17M8 6h8m-8 4h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.2-8.8 11-8.8 11S3.2 14 3.2 8.8A4.8 4.8 0 0 1 12 6.1a4.8 4.8 0 0 1 8.8 2.7Z" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-4-3-6-4-10-2 2-2 4-2 5-2-2-3-4-3-6-3 3-5 7-5 11a7 7 0 0 0 7 7Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 19a3 3 0 0 0 3-3c0-1.5-1-2.5-2-3.5-1 1.5-4 3.5-1 6.5Z" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+    <symbol id="i-location" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 9A7 7 0 0 1 18 6l2 6M4 12l2 6a7 7 0 0 0 12.5-3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell-ring" viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4M2 6l2 1m18-1-2 1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  </svg>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark"><svg><use href="#i-mark"/></svg></div><div><div class="brand-name">المُذَكِّر</div><div class="brand-sub">رَفِيقُ يَوْمِكَ إِلَى الله</div></div></div>
+      <div class="nav-label">القائمة الرئيسية</div>
+      <nav class="nav-list">
+        <button class="nav-btn active" data-page="home"><svg><use href="#i-home"/></svg>الرئيسية</button>
+        <button class="nav-btn" data-page="worship"><svg><use href="#i-book"/></svg>العبادات</button>
+        <button class="nav-btn" data-page="achievements"><svg><use href="#i-award"/></svg>إنجازاتي</button>
+        <button class="nav-btn" data-page="settings"><svg><use href="#i-settings"/></svg>الإعدادات</button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="side-verse"><div class="arabic">﴿ وَاذْكُر رَّبَّكَ كَثِيرًا ﴾</div><small>سورة آل عمران · ٤١</small></div>
+      <div class="profile"><div class="avatar">م</div><div><b>رفيق العبادة</b><span>كل يوم خطوة أقرب</span></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="date-label"><svg><use href="#i-calendar"/></svg><span id="todayLabel">—</span></div>
+        <div class="top-actions">
+          <div class="location-pill" title="الموقع المستخدم لحساب المواقيت"><svg><use href="#i-location"/></svg><span id="locationLabel">القاهرة · افتراضي</span></div>
+          <button class="icon-btn" id="locationBtn" title="تحديد موقعي" aria-label="تحديد موقعي"><svg><use href="#i-map"/></svg></button>
+          <button class="icon-btn" id="themeToggle" title="تبديل المظهر" aria-label="تبديل المظهر"><svg><use href="#i-moon"/></svg></button>
+          <button class="icon-btn" id="notificationsBtn" title="التنبيهات" aria-label="التنبيهات"><svg><use href="#i-bell"/></svg><i class="notif-dot" id="notifDot"></i></button>
+        </div>
+      </header>
+
+      <section class="page active" id="page-home">
+        <div class="welcome"><div class="eyebrow">بِسْمِ اللهِ نَبْدَأُ</div><h1>يومٌ مبارك، وخطوةٌ جديدة 🌿</h1><p id="hijriLabel">—</p></div>
+        <section class="hero">
+          <div class="hero-content"><div class="hero-kicker"><span></span>وِرْدُكَ اليومي</div><h2>اجعل يومك عامرًا بذكر الله</h2><p>عبادات صغيرة تثبت عليها، خيرٌ من أعمال كثيرة تنقطع. تابع وِردك اليوم، واحتفل بكل خطوة.</p><button class="hero-button" id="goTasks"><svg><use href="#i-check"/></svg>تابع إنجازك اليوم</button></div>
+          <div class="hero-progress"><svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="51" fill="none" stroke-width="7"/><circle class="value" id="heroRing" cx="60" cy="60" r="51" fill="none" stroke-width="7" stroke-dasharray="320.44" stroke-dashoffset="320.44"/></svg><div><strong id="heroPercent">0%</strong><small>من وِرد اليوم</small></div></div>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="card prayer-card">
+            <div class="card-top"><div class="card-title"><div class="symbol"><svg><use href="#i-sun"/></svg></div><div><h3>مواقيت الصلاة</h3><p id="prayerLocationSub">حسب موقعك الحالي</p></div></div><span class="subtle-tag">اليوم</span></div>
+            <div class="next-prayer"><div><small>الصلاة القادمة</small><b id="nextPrayerName">—</b></div><div class="countdown"><strong id="countdown">--:--:--</strong><span>الوقت المتبقي</span></div></div>
+            <div class="prayer-list" id="prayerList"></div>
+            <div class="prayer-foot"><span>المواقيت تقديرية وقد تختلف حسب الجهة المحلية.</span><button data-page="settings">ضبط طريقة الحساب</button></div>
+          </section>
+          <aside class="side-stack">
+            <section class="card progress-card"><div class="card-top"><div class="card-title"><div class="symbol"><svg><use href="#i-award"/></svg></div><div><h3>ملخص إنجازك</h3><p>استمر، أنت تتقدم</p></div></div><button class="text-link" data-page="achievements">التفاصيل</button></div><div class="mini-stats"><div class="mini-ring"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="#edf0e9" stroke-width="5"/><circle id="miniRing" cx="32" cy="32" r="27" fill="none" stroke="#5c896d" stroke-width="5" stroke-linecap="round" stroke-dasharray="169.65" stroke-dashoffset="169.65"/></svg><b id="miniPercent">0%</b></div><div><strong id="completedCount">0 من 11 متابعة</strong><span>عبادة مكتملة اليوم</span></div></div><div class="stats-line"></div><div class="stat-row"><span>أيام الاستمرار</span><b id="streakCount">0 يوم</b></div><div class="stat-row"><span>إجمالي الإنجازات</span><b id="achievementCount">0 إنجاز</b></div></section>
+            <section class="streak-card"><div class="streak-icon"><svg><use href="#i-flame"/></svg></div><div><strong>الثبات أجمل من الكثرة</strong><span>ابدأ بالقليل وداوم عليه</span></div></section>
+          </aside>
+        </div>
+
+        <div class="section-head" id="tasksAnchor"><div><h3>عباداتك اليوم</h3><p>تابع وِردك بخطوات بسيطة وعلى قدر استطاعتك</p></div><button class="text-link" data-page="worship">فتح القائمة</button></div>
+        <section class="card home-worship-card">
+          <div class="home-worship-copy"><span class="home-worship-kicker">خُطْوَةٌ صَغِيرَةٌ كُلَّ يَوْم</span><strong id="homeWorshipCount">0 من 11 متابعة مكتملة</strong><span id="homeWorshipHint">ابدأ بما تيسر لك، ويمكنك تخصيص قائمة عباداتك.</span></div>
+          <button class="primary-btn" data-page="worship">متابعة عباداتي <svg><use href="#i-chevron"/></svg></button>
+        </section>
+      </section>
+
+      <section class="page" id="page-worship">
+        <div class="page-heading"><div class="eyebrow">عِبَادَاتُكَ فِي مَكَانٍ وَاحِد</div><h1>العبادات</h1><p>تابع ما تحب المحافظة عليه، وعدّل قائمتك بما يناسب يومك.</p></div>
+        <section class="card worship-overview">
+          <div><span class="worship-overline">وِرْدُ الْيَوْم</span><strong id="worshipProgressText">0 من 11</strong><small id="worshipProgressHint">لا بأس أن تبدأ بالقليل وتستمر.</small></div>
+          <div class="worship-progress-track"><span id="worshipProgressBar"></span></div>
+          <span class="worship-date" id="taskDateTag">اليوم</span>
+        </section>
+        <div class="section-head"><div><h3>قائمة عباداتك</h3><p>اضغط على العبادة لتسجيل إتمامها</p></div><span class="subtle-tag">تُحفظ على جهازك</span></div>
+        <div class="tasks-layout">
+          <section class="card task-card" id="dailyTasks"></section>
+          <aside class="worship-side-stack">
+            <div class="task-bonus fasting-card">
+              <h4>🌙 الصيام النافلة</h4>
+              <p id="fastingHint">سجّل صيام التطوع عند أدائه. لا يدخل ضمن نسبة العبادات اليومية.</p>
+              <button class="secondary-btn fasting-log-btn" id="fastingLogBtn" type="button">سجّل صيام اليوم</button>
+              <button class="bonus-action" id="fastingInfo" type="button">تعرّف على سنن الصيام <svg><use href="#i-chevron"/></svg></button>
+            </div>
+            <div class="card mini-tasbeeh"><div class="card-top"><div class="card-title"><div class="symbol"><svg><use href="#i-heart"/></svg></div><div><h3>سبحتك اليوم</h3><p>مساحة لذكر الله</p></div></div><button class="text-link" data-page="tasbeeh">فتح السبحة</button></div><div class="mini-tasbeeh-row"><div><div class="counter" id="miniTasbeehCount">0</div><small>تسبيحة اليوم</small></div><button class="round-add" id="miniTasbeehAdd" aria-label="أضف تسبيحة"><svg><use href="#i-check"/></svg></button></div></div>
+          </aside>
+        </div>
+        <section class="card habit-tools">
+          <div class="habit-tools-head"><div><h3>خطة تناسبك</h3><p>أضف هدفًا شخصيًا أو أخفِ السنن التي لا تريد متابعتها الآن.</p></div><button class="text-link" id="toggleHabitSettings" type="button" aria-expanded="false">تخصيص القائمة</button></div>
+          <div class="habit-settings-panel" id="habitSettingsPanel" hidden><p class="habit-settings-note">الصلوات المفروضة ثابتة في القائمة. يمكنك تخصيص متابعة الأذكار والسنن والورد القرآني.</p><div id="habitSettingsList"></div></div>
+          <form class="custom-habit-form" id="customHabitForm">
+            <input id="customHabitName" type="text" maxlength="45" placeholder="مثال: قراءة 5 صفحات من القرآن" aria-label="اسم الهدف الشخصي" />
+            <button class="primary-btn" type="submit">إضافة هدف</button>
+          </form>
+        </section>
+      </section>
+
+      <section class="page" id="page-achievements">
+        <div class="page-heading"><div class="eyebrow">خُطُوَاتٌ تُضِيءُ طَرِيقَكَ</div><h1>إنجازاتي</h1><p>كل عبادة أتممتها هي خطوة تستحق أن تفتخر بها، دون مقارنة بأحد.</p></div>
+        <section class="card achievement-summary"><div><h2>رحلتك مع الاستمرار</h2><p>الأهم أن تعود كلما فاتك شيء، وأن تحافظ على نيتك.</p></div><div class="achievement-number" id="achievementsTotal">0/6</div></section>
+        <div class="achievement-grid" id="achievementGrid"></div>
+      </section>
+
+      <section class="page" id="page-tasbeeh">
+        <div class="page-heading"><div class="eyebrow">وَاذْكُرُوا اللهَ كَثِيرًا</div><h1>السبحة الإلكترونية</h1><p>اختر الذكر، واضغط للتسبيح. يُحفظ عدادك على هذا الجهاز.</p><button class="text-link" type="button" data-page="worship">العودة إلى العبادات ←</button></div>
+        <div class="tasbeeh-wrap"><div class="tasbeeh-presets" id="tasbeehPresets"><button class="preset active" data-phrase="سُبْحَانَ اللهِ">سبحان الله</button><button class="preset" data-phrase="الْحَمْدُ لِلَّهِ">الحمد لله</button><button class="preset" data-phrase="اللهُ أَكْبَرُ">الله أكبر</button><button class="preset" data-phrase="أَسْتَغْفِرُ اللهَ">أستغفر الله</button><button class="preset" data-phrase="لا إله إلا الله">لا إله إلا الله</button></div>
+          <div class="card tasbeeh-card"><div class="tasbeeh-label">ذِكْرُكَ الْحَالِي</div><div class="tasbeeh-phrase" id="tasbeehPhrase">سُبْحَانَ اللهِ</div><div class="tasbeeh-count" id="tasbeehCount">0</div><div class="tasbeeh-target">من أصل <span id="tasbeehGoal">33</span> تسبيحة</div><button class="tasbeeh-click" id="tasbeehClick">سَبِّحْ</button><div class="tasbeeh-actions"><button class="outline-light" id="tasbeehReset">إعادة العداد</button><button class="outline-light" id="tasbeehGoalBtn">تغيير الهدف</button></div></div></div>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="page-heading"><div class="eyebrow">إعداداتُكَ وَخُصُوصِيَّتُكَ</div><h1>الإعدادات</h1><p>خصص تجربتك، وتحكم في الموقع والتنبيهات والنسخ الاحتياطي.</p></div>
+        <div class="settings-grid">
+          <section class="card setting-card appearance-card"><h3>🎨 المظهر وتجربة الاستخدام</h3><p>اختر الوضع المناسب لك، وسيتم حفظ تفضيلك على هذا الجهاز.</p><div class="setting-row"><div><b>مظهر التطبيق</b><span>فاتح أو داكن أو حسب إعدادات الجهاز</span></div><select id="themeSelect" aria-label="مظهر التطبيق"><option value="light">الوضع الفاتح</option><option value="dark">الوضع الليلي</option><option value="system">حسب إعدادات الجهاز</option></select></div><div class="setting-row"><div><b>تنسيق عرض الوقت</b><span>يُطبّق على مواقيت الصلاة والتذكيرات وسجل التنبيهات</span></div><select id="timeFormatSelect" aria-label="تنسيق الوقت"><option value="12">12 ساعة (ص / م)</option><option value="24">24 ساعة</option></select></div><div class="setting-note">تغيير التنسيق لا يغيّر مواعيد التذكير المحفوظة، بل يغيّر طريقة عرضها فقط.</div></section>
+          <section class="card setting-card"><h3>📍 الموقع ومواقيت الصلاة</h3><p>يُستخدم موقعك على جهازك لحساب مواقيت الصلاة.</p><div class="setting-row"><div><b>الموقع الحالي</b><span id="settingsLocation">القاهرة · موقع افتراضي</span></div><button class="secondary-btn" id="settingsLocate">تحديد موقعي</button></div><div class="setting-row"><div><b>طريقة الحساب</b><span>اختر الجهة الأقرب للمواقيت المعتمدة لديك</span></div><select id="calcMethod" style="max-width:145px;border:1px solid #e5e4dc;border-radius:9px;padding:7px;font-size:9px;background:#fffefa"><option value="egypt">الهيئة المصرية العامة للمساحة</option><option value="umm">أم القرى</option><option value="mwl">رابطة العالم الإسلامي</option><option value="isna">ISNA</option></select></div><div class="setting-row"><div><b>طريقة حساب العصر</b><span>مذهب الجمهور أو الحنفي</span></div><select id="asrMethod" style="max-width:110px;border:1px solid #e5e4dc;border-radius:9px;padding:7px;font-size:9px;background:#fffefa"><option value="0">الجمهور</option><option value="1">الحنفي</option></select></div><div class="setting-note">تُجلب المواقيت حسب إحداثيات موقعك وطريقة الحساب المختارة، مع حساب فلكي محلي احتياطي عند انقطاع الإنترنت. قد تختلف دقائق عن تقويم المسجد المحلي.</div></section>
+          <section class="card setting-card reminder-settings-card">
+            <h3>🔔 مركز التنبيهات والتذكير</h3>
+            <p>فعّل ما تحتاجه وحدد موعد كل تذكير بنفسك. يمكنك تعديل المواعيد في أي وقت.</p>
+            <div class="reminder-options">
+              <article class="reminder-option">
+                <div class="reminder-option-head"><div><b>تذكير الصلوات</b><span>يتبع مواقيت الصلاة المحسوبة لموقعك</span></div><label class="switch"><input type="checkbox" id="remPrayer" checked><span class="slider"></span></label></div>
+                <div class="reminder-control"><label for="remPrayerLead">التنبيه قبل الصلاة</label><select id="remPrayerLead"><option value="5">5 دقائق</option><option value="10" selected>10 دقائق</option><option value="15">15 دقيقة</option><option value="20">20 دقيقة</option><option value="30">30 دقيقة</option></select></div>
+                <div class="reminder-control stack"><label>اختر الصلوات التي تريد التنبيه قبلها</label><div class="prayer-picks"><label class="prayer-pick"><input type="checkbox" data-prayer-choice="fajr" checked>الفجر</label><label class="prayer-pick"><input type="checkbox" data-prayer-choice="dhuhr" checked>الظهر</label><label class="prayer-pick"><input type="checkbox" data-prayer-choice="asr" checked>العصر</label><label class="prayer-pick"><input type="checkbox" data-prayer-choice="maghrib" checked>المغرب</label><label class="prayer-pick"><input type="checkbox" data-prayer-choice="isha" checked>العشاء</label></div></div>
+              </article>
+              <article class="reminder-option">
+                <div class="reminder-option-head"><div><b>أذكار الصباح</b><span>تذكير يومي ببداية وردك</span></div><label class="switch"><input type="checkbox" id="remMorning" checked><span class="slider"></span></label></div>
+                <div class="reminder-control"><label for="remMorningTime">ميعاد التذكير</label><span class="time-display-shell"><span class="time-display-value" id="remMorningTimeDisplay" aria-hidden="true">07:00</span><input type="time" id="remMorningTime" value="07:00"></span></div>
+              </article>
+              <article class="reminder-option">
+                <div class="reminder-option-head"><div><b>أذكار المساء</b><span>تذكير يومي بورد المساء</span></div><label class="switch"><input type="checkbox" id="remEvening" checked><span class="slider"></span></label></div>
+                <div class="reminder-control"><label for="remEveningTime">ميعاد التذكير</label><span class="time-display-shell"><span class="time-display-value" id="remEveningTimeDisplay" aria-hidden="true">16:30</span><input type="time" id="remEveningTime" value="16:30"></span></div>
+              </article>
+              <article class="reminder-option">
+                <div class="reminder-option-head"><div><b>صيام الاثنين والخميس</b><span>يذكّرك في الليلة السابقة ليوم الصيام</span></div><label class="switch"><input type="checkbox" id="remFasting" checked><span class="slider"></span></label></div>
+                <div class="reminder-control"><label for="remFastingTime">ميعاد التذكير</label><span class="time-display-shell"><span class="time-display-value" id="remFastingTimeDisplay" aria-hidden="true">20:00</span><input type="time" id="remFastingTime" value="20:00"></span></div>
+                <div class="reminder-control"><label for="remFastingDays">أيام الصيام</label><select id="remFastingDays"><option value="both">الاثنين والخميس</option><option value="monday">الاثنين فقط</option><option value="thursday">الخميس فقط</option></select></div>
+              </article>
+              <article class="reminder-option">
+                <div class="reminder-option-head"><div><b>قراءة سورة الكهف</b><span>كل يوم جمعة</span></div><label class="switch"><input type="checkbox" id="remKahf" checked><span class="slider"></span></label></div>
+                <div class="reminder-control"><label for="remKahfTime">ميعاد التذكير</label><span class="time-display-shell"><span class="time-display-value" id="remKahfTimeDisplay" aria-hidden="true">08:00</span><input type="time" id="remKahfTime" value="08:00"></span></div>
+              </article>
+              <article class="reminder-option">
+                <div class="reminder-option-head"><div><b>سنن وآداب يوم الجمعة</b><span>التبكير والاغتسال والطيب والصلاة على النبي ﷺ</span></div><label class="switch"><input type="checkbox" id="remFridaySunnah" checked><span class="slider"></span></label></div>
+                <div class="reminder-control"><label for="remFridaySunnahTime">ميعاد التذكير</label><span class="time-display-shell"><span class="time-display-value" id="remFridaySunnahTimeDisplay" aria-hidden="true">07:00</span><input type="time" id="remFridaySunnahTime" value="07:00"></span></div>
+              </article>
+              <article class="reminder-option">
+                <div class="reminder-option-head"><div><b>قيام الليل</b><span>تذكير لطيف بما تيسر من القيام والوتر</span></div><label class="switch"><input type="checkbox" id="remQiyam" checked><span class="slider"></span></label></div>
+                <div class="reminder-control"><label for="remQiyamTime">ميعاد التذكير</label><span class="time-display-shell"><span class="time-display-value" id="remQiyamTimeDisplay" aria-hidden="true">22:00</span><input type="time" id="remQiyamTime" value="22:00"></span></div>
+                <div class="reminder-control"><label for="remQiyamDays">تكرار التذكير</label><select id="remQiyamDays"><option value="daily">كل ليلة</option><option value="wed">ليلة الخميس (الأربعاء مساءً)</option><option value="thu">ليلة الجمعة (الخميس مساءً)</option><option value="fri">ليلة السبت (الجمعة مساءً)</option><option value="thuFri">الخميس والجمعة مساءً</option></select></div>
+              </article>
+            </div>
+            <section class="custom-reminder-panel" aria-labelledby="customReminderHeading">
+              <h4 id="customReminderHeading">＋ تذكيراتك الخاصة</h4>
+              <p>أنشئ تذكيرًا لأي عبادة أو ورد آخر، واختر الساعة وتكراره. يمكنك إضافة حتى 12 تذكيرًا.</p>
+              <form class="custom-reminder-form" id="customReminderForm">
+                <input id="customReminderTitle" type="text" maxlength="45" placeholder="اسم التذكير، مثل: قراءة جزء من القرآن" aria-label="اسم التذكير" required>
+                <span class="time-display-shell"><span class="time-display-value" id="customReminderTimeDisplay" aria-hidden="true">21:00</span><input id="customReminderTime" type="time" value="21:00" aria-label="وقت التذكير" required></span>
+                <select id="customReminderRepeat" aria-label="تكرار التذكير"><option value="daily">كل يوم</option><option value="fri">الجمعة</option><option value="mon">الاثنين</option><option value="thu">الخميس</option><option value="monThu">الاثنين والخميس</option><option value="weekdays">الأحد إلى الخميس</option><option value="weekend">الجمعة والسبت</option></select>
+                <button class="primary-btn" type="submit">إضافة التذكير</button>
+              </form>
+              <div class="custom-reminder-list" id="customReminderList"><div class="custom-reminder-empty">لم تضف تذكيرات خاصة بعد.</div></div>
+            </section>
+            <div class="reminder-actions"><button class="secondary-btn" id="enableNotifications">تفعيل إشعارات الجهاز</button><button class="secondary-btn" id="exactAlarmSettings" type="button" hidden>ضبط دقة المواعيد</button><button class="primary-btn" id="testReminder">إرسال إشعار تجريبي</button></div>
+            <div class="setting-note">بعد تفعيل إذن إشعارات Android، يجدول Cordova التذكيرات محليًا للأيام الـ14 القادمة حتى عند إغلاق التطبيق، ويعيد تحديث الجدول عند فتح التطبيق أو تغيير الإعدادات. قد يؤخر وضع توفير الطاقة أو عدم السماح بالمنبهات الدقيقة موعد الإشعار. تنبيه الصلاة للأيام القادمة يُحسب من إعدادات الحساب المحلي لمواقيت الصلاة.</div>
+          </section>
+          <section class="card setting-card"><h3>☁️ البيانات والنسخ الاحتياطي</h3><p>احفظ نسخة مستقلة من بياناتك في المكان الذي تختاره على الهاتف أو بطاقة الذاكرة أو مزود الملفات.</p><div class="setting-row"><div><b>حفظ نسخة احتياطية خارج التطبيق</b><span>يفتح نافذة Android لاختيار اسم الملف ومكان الحفظ</span></div><button class="secondary-btn" id="exportData">حفظ نسخة</button></div><div class="setting-row"><div><b>استعادة نسخة احتياطية</b><span>اختر ملف JSON محفوظًا مسبقًا من أي مجلد</span></div><button class="secondary-btn" id="importDataBtn">اختيار ملف</button><input type="file" id="importData" accept="application/json,.json" hidden></div><div class="setting-row"><div><b>مسح بيانات التطبيق</b><span>حذف الإنجازات والإعدادات المحلية</span></div><button class="danger-btn" id="clearData">مسح البيانات</button></div><div class="setting-note">ملف النسخة الاحتياطية يُحفظ خارج مجلد التطبيق باستخدام نافذة حفظ Android (Storage Access Framework)، ولذلك يظل متاحًا بعد حذف التطبيق. الاستعادة تفتح منتقي ملفات Android. لا توجد مزامنة سحابية في هذه النسخة.</div></section>
+          <section class="card setting-card web2app-readiness"><h3>🛠️ فحص وظائف Cordova</h3><p>افحص الإضافات والصلاحيات الأساسية بعد تثبيت APK على الهاتف. الفحص لا يمنح الصلاحيات تلقائيًا.</p><div class="cordova-health-actions"><button class="primary-btn" id="cordovaHealthCheck" type="button">فحص وظائف التطبيق</button><button class="secondary-btn" id="batteryOptimizationBtn" type="button">طلب استثناء تحسين البطارية</button></div><div class="setting-note">زر البطارية يفتح طلب Android الرسمي للسماح للتطبيق بتجاوز تحسين البطارية. القرار النهائي لك من نافذة النظام. هذا لا يعطّل كل قيود سامسونج الإضافية مثل قوائم التطبيقات النائمة.</div><div id="cordovaHealthResults" class="cordova-health-results" aria-live="polite"><div class="cordova-health-empty">اضغط «فحص وظائف التطبيق» لعرض حالة الإضافات والصلاحيات.</div></div></section>
+          <section class="card setting-card"><h3>🚀 تحديث التطبيق</h3><p>فحص آخر إصدار منشور في مستودع GitHub الخاص بالتطبيق.</p><div class="field"><input id="githubRepo" placeholder="username/repository" autocomplete="off" aria-label="مستودع GitHub"></div><div class="field"><button class="primary-btn" id="saveRepo">حفظ المستودع</button><button class="secondary-btn" id="checkUpdate"><svg style="width:13px;vertical-align:middle;margin-left:4px"><use href="#i-refresh"/></svg>بحث عن تحديث</button></div><div class="version-status" id="updateStatus">الإصدار الحالي: 1.5.3</div><div class="setting-note">أنشئ Release في GitHub وأرفق ملف APK حتى يظهر رابط التحميل عند توفر تحديث. يلزم إدخال اسم المستودع بالأعلى.</div></section>
+        </div>
+        <p style="text-align:center;color:#a1a69f;font-size:8px;margin:25px 0 0">المُذَكِّر · نسخة Cordova تجريبية 1.5.3</p>
+      </section>
+    </main>
+  </div>
+
+  <nav class="mobile-nav" aria-label="التنقل الرئيسي"><button class="active" data-page="home"><svg><use href="#i-home"/></svg><span>الرئيسية</span></button><button data-page="worship"><svg><use href="#i-book"/></svg><span>العبادات</span></button><button data-page="achievements"><svg><use href="#i-award"/></svg><span>إنجازاتي</span></button><button data-page="settings"><svg><use href="#i-settings"/></svg><span>الإعدادات</span></button></nav>
+
+  <div class="overlay" id="notificationsOverlay" role="dialog" aria-modal="true" aria-labelledby="notificationsTitle"><div class="drawer"><div class="modal-head"><h2 id="notificationsTitle">مركز التنبيهات</h2><button class="close-btn" id="closeNotifications" aria-label="إغلاق"><svg><use href="#i-check"/></svg></button></div><div id="notificationsList"></div><button class="secondary-btn" id="clearNotifications" style="margin-top:18px">مسح التنبيهات المقروءة</button></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="cordova.js"></script>
+  <script>
+    (() => {
+      'use strict';
+      const APP_VERSION = '1.5.3';
+      const DEFAULT_LOCATION = { lat: 30.0444, lon: 31.2357, name: 'القاهرة · افتراضي' };
+      const STORAGE_KEY = 'almuzakkir_demo_v1';
+      const TASKS = [
+        { id:'fajr', title:'صلاة الفجر', detail:'الصلاة المفروضة', group:'prayers', core:true },
+        { id:'dhuhr', title:'صلاة الظهر', detail:'الصلاة المفروضة', group:'prayers', core:true },
+        { id:'asr', title:'صلاة العصر', detail:'الصلاة المفروضة', group:'prayers', core:true },
+        { id:'maghrib', title:'صلاة المغرب', detail:'الصلاة المفروضة', group:'prayers', core:true },
+        { id:'isha', title:'صلاة العشاء', detail:'الصلاة المفروضة', group:'prayers', core:true },
+        { id:'morning', title:'أذكار الصباح', detail:'من بعد الفجر إلى الشروق', group:'azkar' },
+        { id:'evening', title:'أذكار المساء', detail:'من بعد العصر إلى المغرب', group:'azkar' },
+        { id:'quran', title:'ورد القرآن الكريم', detail:'ولو صفحة واحدة بتدبر', group:'quran' },
+        { id:'duha', title:'صلاة الضحى', detail:'ركعتان أو أكثر', group:'sunan' },
+        { id:'witr', title:'صلاة الوتر', detail:'قبل النوم أو آخر الليل', group:'sunan' },
+        { id:'qiyam', title:'قيام الليل', detail:'ما تيسر ولو ركعتين', group:'sunan' }
+      ];
+      const GROUPS = [
+        { id:'prayers', title:'الصلوات المفروضة', icon:'i-sun' },
+        { id:'azkar', title:'الأذكار اليومية', icon:'i-heart' },
+        { id:'quran', title:'الورد القرآني', icon:'i-book' },
+        { id:'sunan', title:'السنن والنوافل', icon:'i-mark' },
+        { id:'custom', title:'أهدافي الخاصة', icon:'i-award' }
+      ];
+      const $ = (id) => document.getElementById(id);
+      const todayKey = () => { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
+      const defaultState = () => ({ date:todayKey(), completed:{}, history:{}, tasbeeh:0, tasbeehPhrase:'سُبْحَانَ اللهِ', tasbeehGoal:33, notifications:[{id:'welcome',title:'مرحبًا بك في المُذَكِّر',body:'ابدأ يومك بنية صالحة، واجعل لك وردًا ثابتًا.',time:new Date().toISOString(),read:false}], location:DEFAULT_LOCATION, calcMethod:'egypt', asrMethod:'0', reminders:{prayer:true,azkar:true,morning:true,evening:true,fasting:true,kahf:true,fridaySunnah:true,qiyam:true,prayerLead:10,prayerSelection:['fajr','dhuhr','asr','maghrib','isha'],fastingDays:'both',qiyamDays:'daily',times:{morning:'07:00',evening:'16:30',fasting:'20:00',kahf:'08:00',fridaySunnah:'07:00',qiyam:'22:00'},customReminders:[]}, reminderFired:{}, theme:'system', timeFormat:'12', repo:'', achievementsUnlocked:[], hiddenTasks:[], customTasks:[], fastingLog:{}, nativeNotificationsEnabled:false });
+      let state = loadState();
+      let prayerTimes = null;
+      let prayerTimesKey = '';
+      let nextPrayerTarget = null;
+      let toastTimer;
+      let prayerApiAttemptedKey = '';
+      let prayerApiInFlightKey = '';
+      const PRAYER_CACHE_KEY = 'almuzakkir_prayer_cache_v2';
+      function normalizeReminders(input={}){const base=defaultState().reminders;const src=input&&typeof input==='object'?input:{};const validPrayer=['fajr','dhuhr','asr','maghrib','isha'];const prayerSelection=Array.isArray(src.prayerSelection)?src.prayerSelection.filter(x=>validPrayer.includes(x)):base.prayerSelection;const validRepeat=['daily','fri','mon','thu','monThu','weekdays','weekend'];const customReminders=Array.isArray(src.customReminders)?src.customReminders.slice(0,12).map((item,i)=>({id:String(item?.id||`custom-rem-${i}`),title:String(item?.title||'').trim().slice(0,45),time:/^\d{2}:\d{2}$/.test(String(item?.time||''))?item.time:'21:00',repeat:validRepeat.includes(item?.repeat)?item.repeat:'daily',enabled:item?.enabled!==false})).filter(x=>x.title.length>=2):[];return {...base,...src,morning:typeof src.morning==='boolean'?src.morning:src.azkar!==false,evening:typeof src.evening==='boolean'?src.evening:src.azkar!==false,prayerSelection,fastingDays:['both','monday','thursday'].includes(src.fastingDays)?src.fastingDays:'both',qiyamDays:['daily','wed','thu','fri','thuFri'].includes(src.qiyamDays)?src.qiyamDays:'daily',customReminders,times:{...base.times,...(src.times||{})}};}
+      function loadState(){ try{ const raw=localStorage.getItem(STORAGE_KEY); if(!raw)return defaultState(); const parsed=JSON.parse(raw); return {...defaultState(),...parsed,timeFormat:parsed.timeFormat==='24'?'24':'12',reminders:normalizeReminders(parsed.reminders),reminderFired:parsed.reminderFired&&typeof parsed.reminderFired==='object'?parsed.reminderFired:{},hiddenTasks:Array.isArray(parsed.hiddenTasks)?parsed.hiddenTasks:[],customTasks:Array.isArray(parsed.customTasks)?parsed.customTasks:[],fastingLog:parsed.fastingLog&&typeof parsed.fastingLog==='object'?parsed.fastingLog:{}}; }catch(e){return defaultState();} }
+      function saveState(){ try{ localStorage.setItem(STORAGE_KEY,JSON.stringify(state)); }catch(e){ showToast('تعذر الحفظ المحلي. تحقق من مساحة التخزين.'); } }
+      function resolvedTheme(){
+        if(state.theme==='dark'||state.theme==='light')return state.theme;
+        return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+      }
+      function applyTheme(){
+        const theme=resolvedTheme();
+        document.documentElement.dataset.theme=theme;
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme==='dark'?'#101b18':'#102c25');
+        const toggle=$('themeToggle');
+        if(toggle){toggle.innerHTML=`<svg><use href="#${theme==='dark'?'i-sun':'i-moon'}"/></svg>`;toggle.setAttribute('aria-label',theme==='dark'?'تفعيل الوضع الفاتح':'تفعيل الوضع الليلي');toggle.title=theme==='dark'?'تفعيل الوضع الفاتح':'تفعيل الوضع الليلي';}
+        if($('themeSelect'))$('themeSelect').value=state.theme||'system';
+      }
+      function setTheme(theme){state.theme=['light','dark','system'].includes(theme)?theme:'system';saveState();applyTheme();}
+      function showToast(message){ const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2600); }
+      function addNotice(title,body){ state.notifications.unshift({id:`n-${Date.now()}`,title,body,time:new Date().toISOString(),read:false});state.notifications=state.notifications.slice(0,40);saveState();renderNotifications(); }
+      function dayLabel(){ return new Intl.DateTimeFormat('ar-EG',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date()); }
+      function hijriLabel(){ try{return new Intl.DateTimeFormat('ar-EG-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'}).format(new Date())+' هـ';}catch(e){return 'التاريخ الهجري غير متاح في هذا المتصفح';} }
+      function setPage(page){ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===`page-${page}`));const activeNav=page==='tasbeeh'?'worship':page;document.querySelectorAll('.nav-btn,.mobile-nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===activeNav));window.scrollTo({top:0,behavior:'smooth'});if(page==='achievements')renderAchievements();if(page==='worship'||page==='tasbeeh'){renderTasks();renderFastingStatus();} }
+      function allTasks(){return [...TASKS,...(Array.isArray(state.customTasks)?state.customTasks:[])];}
+      function activeTasks(){const hidden=new Set(state.hiddenTasks||[]);return allTasks().filter(t=>!hidden.has(t.id));}
+      function renderHabitSettings(){const target=$('habitSettingsList');if(!target)return;const optional=allTasks().filter(t=>!t.core);target.innerHTML=optional.map(t=>`<label class="habit-setting-row"><span>${escapeHtml(t.title)}</span><input type="checkbox" data-habit-id="${escapeHtml(t.id)}" ${!(state.hiddenTasks||[]).includes(t.id)?'checked':''}></label>`).join('')||'<p class="empty-state">لا توجد عناصر قابلة للتخصيص.</p>';target.querySelectorAll('[data-habit-id]').forEach(input=>input.addEventListener('change',e=>{const id=e.target.dataset.habitId;state.hiddenTasks=state.hiddenTasks||[];if(e.target.checked)state.hiddenTasks=state.hiddenTasks.filter(x=>x!==id);else if(!state.hiddenTasks.includes(id))state.hiddenTasks.push(id);saveState();renderTasks();renderHomeStats();renderHabitSettings();}));}
+      function addCustomHabit(name){const clean=String(name||'').trim().replace(/\s+/g,' ');if(clean.length<2){showToast('اكتب اسمًا واضحًا للهدف.');return;}if(allTasks().some(t=>t.title===clean)){showToast('هذا الهدف موجود بالفعل.');return;}state.customTasks=state.customTasks||[];state.customTasks.push({id:`custom-${Date.now()}`,title:clean,detail:'هدف شخصي اخترته لنفسك',group:'custom',custom:true});saveState();renderTasks();renderHomeStats();renderHabitSettings();showToast('أُضيف هدفك إلى قائمة العبادات.');}
+      function toggleFastingToday(){state.fastingLog=state.fastingLog||{};const key=todayKey();state.fastingLog[key]=!state.fastingLog[key];saveState();renderFastingStatus();showToast(state.fastingLog[key]?'تقبّل الله صيامك.':'تم إلغاء تسجيل صيام اليوم.');}
+      function renderFastingStatus(){const logged=!!(state.fastingLog||{})[todayKey()];const button=$('fastingLogBtn');if(button){button.textContent=logged?'تم تسجيل صيام اليوم ✓':'سجّل صيام اليوم';button.classList.toggle('is-complete',logged);}const day=new Date().getDay();const hint=$('fastingHint');if(hint)hint.textContent=(day===1||day===4)?'اليوم يوافق الاثنين أو الخميس؛ تذكير بصيام التطوع لمن أراد.':'سجّل صيام التطوع عند أدائه، مثل الاثنين والخميس والأيام الفاضلة.';}
+      function renderTasks(){const done=state.completed[state.date]||{};const container=$('dailyTasks');if(!container)return;container.innerHTML='';const listTasks=activeTasks();GROUPS.forEach(group=>{const tasks=listTasks.filter(t=>t.group===group.id);if(!tasks.length)return;const title=document.createElement('div');title.className='task-group-title';title.innerHTML=`<svg><use href="#${group.icon}"/></svg>${escapeHtml(group.title)}`;container.appendChild(title);const list=document.createElement('div');list.className='task-list';tasks.forEach(task=>{const row=document.createElement('div');row.className='task-row'+(done[task.id]?' done':'');row.setAttribute('role','checkbox');row.setAttribute('aria-checked',done[task.id]?'true':'false');row.tabIndex=0;row.innerHTML=`<div class="task-check"><svg><use href="#i-check"/></svg></div><div class="task-info"><b>${escapeHtml(task.title)}</b><span>${escapeHtml(task.detail||'')}</span></div><div class="task-side">${done[task.id]?'تمت ✓':'إتمام'}</div>`;const toggle=()=>toggleTask(task.id);row.addEventListener('click',toggle);row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});list.appendChild(row);});container.appendChild(list);});$('taskDateTag').textContent=new Intl.DateTimeFormat('ar-EG',{day:'numeric',month:'short'}).format(new Date());}
+      function toggleTask(id){if(!state.completed[state.date])state.completed[state.date]={};const was=!!state.completed[state.date][id];state.completed[state.date][id]=!was;saveState();renderHomeStats();renderTasks();updateAchievements();if(!was){const task=allTasks().find(t=>t.id===id);if(task)showToast(`تقبّل الله منك: ${task.title}`);if(activeTasks().length&&activeTasks().every(t=>state.completed[state.date]?.[t.id]))addNotice('ما شاء الله! أتممت وِرد اليوم','أكملت قائمة العبادات التي اخترت متابعتها اليوم.');}}
+      function countDone(date=todayKey()){return activeTasks().filter(t=>!!state.completed[date]?.[t.id]).length;}
+      function getStreak(){let n=0;const d=new Date();const threshold=Math.max(1,Math.ceil(activeTasks().length/2));for(let i=0;i<365;i++){const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;if(countDone(key)>=threshold){n++;d.setDate(d.getDate()-1);}else break;}return n;}
+      function renderHomeStats(){const done=countDone();const total=activeTasks().length;const pct=total?Math.round(done/total*100):0;$('heroPercent').textContent=pct+'%';$('heroRing').style.strokeDashoffset=(320.44-(320.44*pct/100)).toFixed(2);$('miniPercent').textContent=pct+'%';$('miniRing').style.strokeDashoffset=(169.65-(169.65*pct/100)).toFixed(2);$('completedCount').textContent=`${done} من ${total} متابعة`;$('homeWorshipCount').textContent=`${done} من ${total} متابعة مكتملة`;$('homeWorshipHint').textContent=done===total&&total?'أحسنت، أنجزت كل ما اخترت متابعته اليوم.':'ابدأ بما تيسر لك، ويمكنك تخصيص قائمة عباداتك.';$('worshipProgressText').textContent=`${done} من ${total}`;$('worshipProgressHint').textContent=pct===100&&total?'أكملت خطتك لهذا اليوم، تقبّل الله منك.':'كل خطوة خير، ولا بأس أن تعود متى استطعت.';$('worshipProgressBar').style.width=pct+'%';$('streakCount').textContent=getStreak()+' يوم';$('achievementCount').textContent=unlockedCount()+' إنجاز';$('miniTasbeehCount').textContent=state.tasbeeh;$('tasbeehCount').textContent=state.tasbeeh;$('tasbeehGoal').textContent=state.tasbeehGoal;}
+      function unlockedCount(){return achievementDefs().filter(a=>a.progress>=a.target).length;}
+      function achievementDefs(){const threshold=Math.max(1,Math.ceil(activeTasks().length/2));const totalDays=Object.keys(state.history).filter(k=>activeTasks().filter(t=>state.history[k]?.[t.id]).length>=threshold).length+(countDone()>=threshold?1:0);const totalPrayers=Object.values(state.history).reduce((s,d)=>s+['fajr','dhuhr','asr','maghrib','isha'].filter(k=>d&&d[k]).length,0)+['fajr','dhuhr','asr','maghrib','isha'].filter(k=>state.completed[state.date]?.[k]).length;return [
+        {id:'first',name:'بداية مباركة',desc:'أكمل أول عبادة في يومك.',icon:'i-sun',progress:Math.min(1,Object.values(state.completed[state.date]||{}).filter(Boolean).length),target:1},
+        {id:'five',name:'محافظ على الصلاة',desc:'أتممت 5 صلوات مسجلة.',icon:'i-heart',progress:Math.min(5,totalPrayers),target:5},
+        {id:'azkar',name:'أنيس الذكر',desc:'أكمل أذكار الصباح والمساء في يوم.',icon:'i-book',progress:Math.min(2,Number(!!state.completed[state.date]?.morning)+Number(!!state.completed[state.date]?.evening)),target:2},
+        {id:'steady3',name:'خطوات ثابتة',desc:'حافظ على نصف وِردك لثلاثة أيام.',icon:'i-flame',progress:Math.min(3,totalDays),target:3},
+        {id:'steady7',name:'أسبوع من الخير',desc:'حافظ على نصف وِردك لسبعة أيام.',icon:'i-award',progress:Math.min(7,totalDays),target:7},
+        {id:'tasbeeh100',name:'لسان ذاكر',desc:'أتمم 100 تسبيحة.',icon:'i-heart',progress:Math.min(100,state.tasbeeh),target:100}
+      ];}
+      function renderAchievements(){const defs=achievementDefs();$('achievementsTotal').textContent=`${unlockedCount()}/6`;$('achievementGrid').innerHTML=defs.map(a=>{const done=a.progress>=a.target;return `<article class="card achievement ${done?'':'locked'}"><div class="achievement-icon"><svg><use href="#${a.icon}"/></svg></div><h3>${a.name}</h3><p>${a.desc}</p><progress max="${a.target}" value="${a.progress}"></progress><div style="font-size:8px;color:#929990;margin-top:6px">${done?'مكتمل ✓':`${a.progress} / ${a.target}`}</div></article>`}).join('');}
+      function updateAchievements(){renderAchievements();renderHomeStats();}
+      function rad(d){return d*Math.PI/180;}function deg(r){return r*180/Math.PI;}function dayOfYear(date){const start=new Date(date.getFullYear(),0,0);return Math.floor((date-start)/86400000);}
+      function solarPosition(date,longitude){const N=dayOfYear(date);const hour=date.getHours()+date.getMinutes()/60;const gamma=2*Math.PI/365*(N-1+(hour-12)/24);const eq=229.18*(0.000075+0.001868*Math.cos(gamma)-0.032077*Math.sin(gamma)-0.014615*Math.cos(2*gamma)-0.040849*Math.sin(2*gamma));const dec=0.006918-0.399912*Math.cos(gamma)+0.070257*Math.sin(gamma)-0.006758*Math.cos(2*gamma)+0.000907*Math.sin(2*gamma)-0.002697*Math.cos(3*gamma)+0.00148*Math.sin(3*gamma);return {eq,dec};}
+      function solarNoon(date,lon){
+        // Equation of time is evaluated at local solar-noon reference, not the current clock minute.
+        const noonDate=new Date(date.getFullYear(),date.getMonth(),date.getDate(),12,0,0,0);
+        const {eq}=solarPosition(noonDate,lon);
+        const tz=-date.getTimezoneOffset()/60;
+        return 12-eq/60-lon/15+tz;
+      }
+      function hourAngle(lat,dec,zenith){const phi=rad(lat);const c=(Math.cos(rad(zenith))-Math.sin(phi)*Math.sin(dec))/(Math.cos(phi)*Math.cos(dec));if(c < -1 || c > 1)return null;return deg(Math.acos(c));}
+      function minutesToDate(date,hours){const d=new Date(date.getFullYear(),date.getMonth(),date.getDate());d.setMinutes(Math.round(hours*60));return d;}
+      function calcPrayerTimes(date,loc){
+        const safeLoc=validLocation(loc)?loc:DEFAULT_LOCATION;
+        const {dec}=solarPosition(new Date(date.getFullYear(),date.getMonth(),date.getDate(),12),safeLoc.lon);
+        const noon=solarNoon(date,safeLoc.lon);
+        let fajrAngle=19.5,ishaAngle=17.5;
+        if(state.calcMethod==='umm'){fajrAngle=18.5;ishaAngle=90;}
+        else if(state.calcMethod==='mwl'){fajrAngle=18;ishaAngle=17;}
+        else if(state.calcMethod==='isna'){fajrAngle=15;ishaAngle=15;}
+        const sunriseHA=hourAngle(safeLoc.lat,dec,90.833);
+        const fajrHA=hourAngle(safeLoc.lat,dec,90+fajrAngle);
+        const ishaHA=state.calcMethod==='umm'?null:hourAngle(safeLoc.lat,dec,90+ishaAngle);
+        const asrShadow=1+Number(state.asrMethod||0);
+        const asrAlt=deg(Math.atan(1/(asrShadow+Math.tan(Math.abs(rad(safeLoc.lat)-dec)))));
+        const asrHA=hourAngle(safeLoc.lat,dec,90-asrAlt);
+        const result={
+          fajr:fajrHA===null?null:minutesToDate(date,noon-fajrHA/15),
+          sunrise:sunriseHA===null?null:minutesToDate(date,noon-sunriseHA/15),
+          dhuhr:minutesToDate(date,noon+2/60),
+          asr:asrHA===null?null:minutesToDate(date,noon+asrHA/15),
+          maghrib:sunriseHA===null?null:minutesToDate(date,noon+sunriseHA/15),
+          isha:ishaHA===null?null:minutesToDate(date,noon+ishaHA/15)
+        };
+        if(state.calcMethod==='umm'){const mag=result.maghrib;result.isha=mag?new Date(mag.getTime()+90*60000):null;}
+        return result;
+      }
+      function activeHourCycle(){return state.timeFormat==='24'?'h23':'h12';}
+      function fmtTime(d){if(!d||!(d instanceof Date)||Number.isNaN(d.getTime()))return '—';return new Intl.DateTimeFormat('ar-EG-u-nu-latn',{hour:'2-digit',minute:'2-digit',hourCycle:activeHourCycle()}).format(d);}
+      function fmtStoredTime(value){if(!/^\d{2}:\d{2}$/.test(String(value||'')))return '—';const [h,m]=String(value).split(':').map(Number);if(h>23||m>59)return '—';return fmtTime(new Date(2000,0,1,h,m,0,0));}
+      function refreshTimeInputDisplays(){['remMorningTime','remEveningTime','remFastingTime','remKahfTime','remFridaySunnahTime','remQiyamTime','customReminderTime'].forEach(id=>{const input=$(id),display=$(id+'Display');if(input&&display)display.textContent=fmtStoredTime(input.value);});}
+      function setTimeFormat(value){state.timeFormat=value==='24'?'24':'12';saveState();if($('timeFormatSelect'))$('timeFormatSelect').value=state.timeFormat;refreshTimeInputDisplays();updatePrayerUI();renderNotifications();renderCustomReminderList();showToast(state.timeFormat==='24'?'تم تفعيل نظام 24 ساعة.':'تم تفعيل نظام 12 ساعة.');}
+      function validLocation(loc){return !!loc&&Number.isFinite(Number(loc.lat))&&Number(loc.lat)>=-90&&Number(loc.lat)<=90&&Number.isFinite(Number(loc.lon))&&Number(loc.lon)>=-180&&Number(loc.lon)<=180;}
+      function dateKeyFor(date){return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;}
+      function prayerContextKey(date=new Date()){
+        const loc=validLocation(state.location)?state.location:DEFAULT_LOCATION;
+        return [dateKeyFor(date),Number(loc.lat).toFixed(4),Number(loc.lon).toFixed(4),state.calcMethod,state.asrMethod,date.getTimezoneOffset()].join('|');
+      }
+      function readPrayerCache(key){
+        try{
+          const cached=JSON.parse(localStorage.getItem(PRAYER_CACHE_KEY)||'null');
+          if(!cached||cached.key!==key||!cached.times)return null;
+          const mapped={};
+          for(const k of ['fajr','sunrise','dhuhr','asr','maghrib','isha']){
+            const value=cached.times[k];mapped[k]=value?new Date(value):null;
+            if(mapped[k]&&Number.isNaN(mapped[k].getTime()))return null;
+          }
+          return mapped;
+        }catch(_){return null;}
+      }
+      function savePrayerCache(key,times){
+        try{const data={key,times:{}};for(const k of ['fajr','sunrise','dhuhr','asr','maghrib','isha'])data.times[k]=times[k] instanceof Date?times[k].toISOString():null;localStorage.setItem(PRAYER_CACHE_KEY,JSON.stringify(data));}catch(_){}
+      }
+      function prayerMethodId(){return ({egypt:5,umm:4,mwl:3,isna:2})[state.calcMethod]||5;}
+      function parseApiPrayerTime(value,date){
+        if(value===null||value===undefined)return null;
+        const text=String(value).trim();
+        // AlAdhan's iso8601=true response carries the location's UTC offset.
+        if(/\d{4}-\d{2}-\d{2}T/.test(text)){const parsed=new Date(text);return Number.isNaN(parsed.getTime())?null:parsed;}
+        const match=text.match(/(?:^|\s)(\d{1,2}):(\d{2})/);
+        if(!match)return null;
+        const hour=Number(match[1]),minute=Number(match[2]);
+        if(hour>23||minute>59)return null;
+        return new Date(date.getFullYear(),date.getMonth(),date.getDate(),hour,minute,0,0);
+      }
+      async function fetchJsonWithTimeout(url,options={},timeoutMs=10000){
+        if(typeof AbortController==='undefined')return fetch(url,options);
+        const controller=new AbortController();
+        const timer=setTimeout(()=>controller.abort(),timeoutMs);
+        try{return await fetch(url,{...options,signal:controller.signal});}
+        finally{clearTimeout(timer);}
+      }
+      async function fetchPrayerTimesForLocation(date,loc){
+        const dateParam=`${String(date.getDate()).padStart(2,'0')}-${String(date.getMonth()+1).padStart(2,'0')}-${date.getFullYear()}`;
+        const params=new URLSearchParams({latitude:String(loc.lat),longitude:String(loc.lon),method:String(prayerMethodId()),school:String(Number(state.asrMethod)||0),iso8601:'true'});
+        const response=await fetchJsonWithTimeout(`https://api.aladhan.com/v1/timings/${dateParam}?${params.toString()}`,{headers:{Accept:'application/json'},cache:'no-store'},12000);
+        if(!response.ok)throw new Error(`Prayer API HTTP ${response.status}`);
+        const payload=await response.json();
+        if(payload.code!==200||!payload.data?.timings)throw new Error('Prayer API returned invalid data');
+        const raw=payload.data.timings;
+        const parsed={
+          fajr:parseApiPrayerTime(raw.Fajr,date),
+          sunrise:parseApiPrayerTime(raw.Sunrise,date),
+          dhuhr:parseApiPrayerTime(raw.Dhuhr,date),
+          asr:parseApiPrayerTime(raw.Asr,date),
+          maghrib:parseApiPrayerTime(raw.Maghrib||raw.Sunset,date),
+          isha:parseApiPrayerTime(raw.Isha,date)
+        };
+        if(Object.values(parsed).some(v=>!(v instanceof Date)||Number.isNaN(v.getTime())))throw new Error('Prayer API returned incomplete times');
+        return parsed;
+      }
+      async function ensurePrayerTimesFromApi(force=false){
+        const now=new Date(),loc=validLocation(state.location)?state.location:DEFAULT_LOCATION,key=prayerContextKey(now);
+        if(!force&&(prayerApiAttemptedKey===key||prayerApiInFlightKey===key))return;
+        if(prayerApiInFlightKey===key)return;
+        prayerApiAttemptedKey=key;prayerApiInFlightKey=key;
+        try{
+          const times=await fetchPrayerTimesForLocation(now,loc);
+          if(key!==prayerContextKey(new Date()))return;
+          prayerTimes=times;prayerTimesKey=key;savePrayerCache(key,times);updatePrayerUI();queueNativeReminderSync();
+        }catch(error){
+          // Keep the local astronomical calculation as an offline fallback; allow retry when the app resumes or network returns.
+          if(prayerApiAttemptedKey===key)prayerApiAttemptedKey='';
+          console.warn('تعذر جلب مواقيت الصلاة عبر الإنترنت؛ سيُستخدم الحساب المحلي.',error);
+        }finally{if(prayerApiInFlightKey===key)prayerApiInFlightKey='';}
+      }
+      function selectNextPrayer(now){
+        const items=[['fajr','الفجر'],['dhuhr','الظهر'],['asr','العصر'],['maghrib','المغرب'],['isha','العشاء']];
+        for(const [key,name] of items){const time=prayerTimes?.[key];if(time instanceof Date&&!Number.isNaN(time.getTime())&&time>now)return {key,name,time};}
+        const tomorrow=new Date(now);tomorrow.setDate(tomorrow.getDate()+1);
+        const nextFajr=calcPrayerTimes(tomorrow,state.location||DEFAULT_LOCATION).fajr;
+        return nextFajr?{key:'fajr',name:'الفجر',time:nextFajr}:null;
+      }
+      function updatePrayerUI(){
+        const now=new Date(),key=prayerContextKey(now),loc=validLocation(state.location)?state.location:DEFAULT_LOCATION;
+        if(prayerTimesKey!==key){prayerTimes=readPrayerCache(key)||calcPrayerTimes(now,loc);prayerTimesKey=key;}
+        const items=[['fajr','الفجر','i-moon'],['sunrise','الشروق','i-sun'],['dhuhr','الظهر','i-sun'],['asr','العصر','i-sun'],['maghrib','المغرب','i-sun'],['isha','العشاء','i-moon']];
+        const next=selectNextPrayer(now);nextPrayerTarget=next?.time||null;
+        $('nextPrayerName').textContent=next?.name||'—';
+        $('countdown').textContent=next?countdown(next.time-now):'--:--:--';
+        $('prayerList').innerHTML=items.map(([key,name,icon])=>`<div class="prayer-item ${next?.key===key?'active':''}"><div class="prayer-icon"><svg><use href="#${icon}"/></svg></div><b>${name}</b><span>${fmtTime(prayerTimes[key])}</span></div>`).join('');
+        $('prayerLocationSub').textContent=(state.location?.name||'القاهرة · افتراضي')+' · '+new Intl.DateTimeFormat('ar-EG',{day:'numeric',month:'short'}).format(now);
+      }
+      function updateCountdownOnly(){
+        const now=new Date();
+        if(!nextPrayerTarget||nextPrayerTarget<=now){updatePrayerUI();return;}
+        $('countdown').textContent=countdown(nextPrayerTarget-now);
+      }
+      function countdown(ms){if(!Number.isFinite(ms)||ms<0)ms=0;const s=Math.floor(ms/1000);return [Math.floor(s/3600),Math.floor((s%3600)/60),s%60].map(n=>String(n).padStart(2,'0')).join(':');}
+      function cityNameFromGeocode(data){
+        const parts=[data?.city,data?.locality,data?.principalSubdivision].map(x=>String(x||'').trim()).filter(Boolean);
+        const unique=[...new Set(parts)];
+        return unique.slice(0,2).join('، ')||'';
+      }
+      async function reverseGeocodeCity(lat,lon){
+        const params=new URLSearchParams({latitude:String(lat),longitude:String(lon),localityLanguage:'ar'});
+        const response=await fetchJsonWithTimeout(`https://api.bigdatacloud.net/data/reverse-geocode-client?${params.toString()}`,{headers:{Accept:'application/json'},cache:'no-store'},10000);
+        if(!response.ok)throw new Error(`Geocoding HTTP ${response.status}`);
+        const data=await response.json();
+        const name=cityNameFromGeocode(data);
+        if(!name)throw new Error('لم تُرجع خدمة الموقع اسم مدينة.');
+        return name;
+      }
+      function locate(){
+        const startPositionRequest=()=>{
+          if(!navigator.geolocation){showToast('المتصفح لا يدعم تحديد الموقع.');return;}
+          showToast('جارٍ تحديد إحداثيات موقعك…');
+          navigator.geolocation.getCurrentPosition(async pos=>{
+            const lat=Number(pos.coords.latitude),lon=Number(pos.coords.longitude);
+            if(!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180){showToast('استقبل التطبيق إحداثيات غير صحيحة.');return;}
+            const accuracy=Number.isFinite(pos.coords.accuracy)?Math.round(pos.coords.accuracy):null;
+            state.location={lat,lon,name:'جارٍ تحديد اسم المدينة…',accuracy};
+            prayerTimes=null;prayerTimesKey='';prayerApiAttemptedKey='';
+            saveState();renderLocation();updatePrayerUI();ensurePrayerTimesFromApi(true);queueNativeReminderSync();
+            try{
+              const name=await reverseGeocodeCity(lat,lon);
+              if(state.location&&Math.abs(state.location.lat-lat)<0.00001&&Math.abs(state.location.lon-lon)<0.00001){
+                state.location.name=name;saveState();renderLocation();updatePrayerUI();
+                showToast(`تم تحديد موقعك: ${name}`);
+              }
+            }catch(error){
+              console.warn('تعذر تحويل الإحداثيات إلى اسم مدينة.',error);
+              if(state.location&&Math.abs(state.location.lat-lat)<0.00001&&Math.abs(state.location.lon-lon)<0.00001){
+                state.location.name=`موقع محدد (${lat.toFixed(3)}، ${lon.toFixed(3)})`;saveState();renderLocation();updatePrayerUI();
+                showToast('تم تحديد موقعك وحساب المواقيت، لكن تعذر جلب اسم المدينة. تحقق من الإنترنت.');
+              }
+            }
+          },err=>{
+            const msgs={1:'لم تسمح بالوصول إلى الموقع. فعّل إذن الموقع للتطبيق.',2:'تعذر تحديد الموقع؛ تأكد من تشغيل GPS.',3:'انتهت مهلة تحديد الموقع. حاول مرة أخرى.'};
+            showToast(msgs[err.code]||'تعذر تحديد الموقع.');
+          },{enableHighAccuracy:true,timeout:20000,maximumAge:60000});
+        };
+        const permissionApi=window.cordova?.plugins?.permissions;
+        if(cordovaIsReady&&permissionApi&&typeof permissionApi.requestPermissions==='function'){
+          const requested=[permissionApi.ACCESS_COARSE_LOCATION,permissionApi.ACCESS_FINE_LOCATION].filter(Boolean);
+          if(requested.length){permissionApi.requestPermissions(requested,startPositionRequest,()=>startPositionRequest());return;}
+        }
+        startPositionRequest();
+      }
+      function renderLocation(){
+        const loc=state.location||DEFAULT_LOCATION;
+        const name=loc.name||DEFAULT_LOCATION.name;
+        $('locationLabel').textContent=name;
+        $('settingsLocation').textContent=name+(loc.accuracy?` · دقة تقريبية ${loc.accuracy}م`:'');
+        $('prayerLocationSub').textContent=name;
+      }
+      function renderNotifications(){const list=$('notificationsList');const notes=state.notifications||[];$('notifDot').style.display=notes.some(n=>!n.read)?'block':'none';if(!notes.length){list.innerHTML='<div class="empty-state">لا توجد تنبيهات حتى الآن 🌿</div>';return;}list.innerHTML=notes.map(n=>`<div class="notice-item"><div class="notice-icon"><svg><use href="#i-bell-ring"/></svg></div><div><b>${escapeHtml(n.title)}</b><p>${escapeHtml(n.body)}</p><time>${new Intl.DateTimeFormat('ar-EG',{dateStyle:'medium'}).format(new Date(n.time))} · ${fmtTime(new Date(n.time))}</time></div></div>`).join('');}
+      function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+      function openNotifications(){state.notifications.forEach(n=>n.read=true);saveState();renderNotifications();$('notificationsOverlay').classList.add('open');}
+      function updateTasbeeh(){ $('tasbeehCount').textContent=state.tasbeeh;$('miniTasbeehCount').textContent=state.tasbeeh;$('tasbeehPhrase').textContent=state.tasbeehPhrase;$('tasbeehGoal').textContent=state.tasbeehGoal; }
+      function updatePhrase(phrase){state.tasbeehPhrase=phrase;document.querySelectorAll('.preset').forEach(b=>b.classList.toggle('active',b.dataset.phrase===phrase));saveState();updateTasbeeh();}
+      function updateReminderUI(){const r=state.reminders=normalizeReminders(state.reminders);$('remPrayer').checked=!!r.prayer;$('remMorning').checked=!!r.morning;$('remEvening').checked=!!r.evening;$('remFasting').checked=!!r.fasting;$('remKahf').checked=!!r.kahf;$('remFridaySunnah').checked=!!r.fridaySunnah;$('remQiyam').checked=!!r.qiyam;$('remPrayerLead').value=String(r.prayerLead||10);$('remQiyamDays').value=r.qiyamDays||'daily';if($('remFastingDays'))$('remFastingDays').value=r.fastingDays||'both';document.querySelectorAll('[data-prayer-choice]').forEach(input=>input.checked=r.prayerSelection.includes(input.dataset.prayerChoice));Object.entries({remMorningTime:'morning',remEveningTime:'evening',remFastingTime:'fasting',remKahfTime:'kahf',remFridaySunnahTime:'fridaySunnah',remQiyamTime:'qiyam'}).forEach(([id,key])=>{if($(id))$(id).value=r.times[key]||'08:00';});if($('timeFormatSelect'))$('timeFormatSelect').value=state.timeFormat==='24'?'24':'12';refreshTimeInputDisplays();renderCustomReminderList();$('calcMethod').value=state.calcMethod;$('asrMethod').value=state.asrMethod;$('githubRepo').value=state.repo||'';}
+      function repeatDays(repeat){return ({daily:[0,1,2,3,4,5,6],fri:[5],mon:[1],thu:[4],monThu:[1,4],weekdays:[0,1,2,3,4],weekend:[5,6]})[repeat]||[0,1,2,3,4,5,6];}
+      function renderCustomReminderList(){const target=$('customReminderList');if(!target)return;const list=state.reminders?.customReminders||[];if(!list.length){target.innerHTML='<div class="custom-reminder-empty">لم تضف تذكيرات خاصة بعد.</div>';return;}const labels={daily:'كل يوم',fri:'كل يوم جمعة',mon:'كل اثنين',thu:'كل خميس',monThu:'الاثنين والخميس',weekdays:'الأحد إلى الخميس',weekend:'الجمعة والسبت'};target.innerHTML=list.map(item=>`<div class="custom-reminder-item"><div class="custom-reminder-info"><b>${escapeHtml(item.title)}</b><span>${escapeHtml(fmtStoredTime(item.time))} · ${labels[item.repeat]||'كل يوم'} · ${item.enabled?'مفعّل':'متوقف'}</span></div><button type="button" data-custom-toggle="${escapeHtml(item.id)}">${item.enabled?'إيقاف':'تشغيل'}</button><button type="button" class="delete" data-custom-delete="${escapeHtml(item.id)}">حذف</button></div>`).join('');target.querySelectorAll('[data-custom-toggle]').forEach(btn=>btn.addEventListener('click',()=>{const item=list.find(x=>x.id===btn.dataset.customToggle);if(item){item.enabled=!item.enabled;saveState();renderCustomReminderList();queueNativeReminderSync();}}));target.querySelectorAll('[data-custom-delete]').forEach(btn=>btn.addEventListener('click',()=>{state.reminders.customReminders=state.reminders.customReminders.filter(x=>x.id!==btn.dataset.customDelete);saveState();renderCustomReminderList();queueNativeReminderSync();showToast('تم حذف التذكير الشخصي.');}));}
+      function addCustomReminder(event){event.preventDefault();const title=$('customReminderTitle').value.trim().replace(/\s+/g,' '),time=$('customReminderTime').value,repeat=$('customReminderRepeat').value;if(title.length<2){showToast('اكتب اسمًا واضحًا للتذكير.');return;}if(!/^\d{2}:\d{2}$/.test(time)){showToast('اختر وقت التذكير أولًا.');return;}state.reminders=normalizeReminders(state.reminders);if(state.reminders.customReminders.length>=12){showToast('يمكنك إضافة 12 تذكيرًا كحد أقصى.');return;}state.reminders.customReminders.push({id:`custom-${Date.now()}`,title,time,repeat,enabled:true});saveState();$('customReminderTitle').value='';renderCustomReminderList();queueNativeReminderSync();showToast('تمت إضافة التذكير وحفظه.');}
+
+      function checkDateRollover(){const key=todayKey();if(key!==state.date){state.history[state.date]=state.completed[state.date]||{};state.date=key;saveState();$('todayLabel').textContent=dayLabel();$('hijriLabel').textContent=hijriLabel();renderTasks();renderHomeStats();renderFastingStatus();prayerTimesKey='';updatePrayerUI();ensurePrayerTimesFromApi(true);addNotice('صباح جديد، وِرد جديد','ابدأ يومك بنية صالحة ولا تنس أذكارك.');queueNativeReminderSync();}}
+      let cordovaIsReady=false;
+      let nativeScheduleTimer=null;
+      let nativeScheduleGeneration=0;
+      let instantNotificationCounter=0;
+      const NATIVE_REMINDER_DAYS=14;
+      const NATIVE_CHANNEL_ID='almuzakkir_reminders';
+      const NATIVE_CHANNEL_NAME='تذكيرات المُذَكِّر';
+      function getLocalNotificationPlugin(){return window.cordova?.plugins?.notification?.local||null;}
+      function makeNativeNotificationId(value){let hash=2166136261;for(let i=0;i<value.length;i++){hash^=value.charCodeAt(i);hash=Math.imul(hash,16777619);}return (hash>>>0)||1;}
+      function notifyDevice(title,body){
+        const plugin=getLocalNotificationPlugin();
+        if(cordovaIsReady&&plugin&&state.nativeNotificationsEnabled){
+          try{plugin.schedule({id:makeNativeNotificationId(`instant:${Date.now()}:${++instantNotificationCounter}`),title:String(title||'المُذَكِّر'),text:String(body||''),androidChannelId:NATIVE_CHANNEL_ID,androidChannelName:NATIVE_CHANNEL_NAME,smallIcon:'res://notification',androidPriority:'PRIORITY_HIGH',androidAllowWhileIdle:true});return true;}catch(e){console.warn('تعذر إرسال إشعار Cordova فوري.',e);return false;}
+        }
+        if(!('Notification'in window)||Notification.permission!=='granted')return false;
+        try{new Notification(title,{body});return true;}catch(e){return false;}
+      }
+      function requestNativeNotificationPermission(plugin){return new Promise(resolve=>{try{plugin.requestPermission(granted=>resolve(!!granted));}catch(e){console.warn('تعذر طلب إذن الإشعارات المحلية.',e);resolve(false);}});}
+      async function enableNotifications(){
+        const plugin=getLocalNotificationPlugin();
+        if(cordovaIsReady){
+          if(!plugin){showToast('إضافة الإشعارات المحلية غير موجودة في بناء Cordova. راجع package.json.');return;}
+          const granted=await requestNativeNotificationPermission(plugin);
+          if(!granted){showToast('لم يتم منح إذن إشعارات Android. يمكنك تفعيله من إعدادات التطبيق.');return;}
+          state.nativeNotificationsEnabled=true;saveState();
+          try{plugin.createChannel({androidChannelId:NATIVE_CHANNEL_ID,androidChannelName:NATIVE_CHANNEL_NAME,androidChannelDescription:'تنبيهات الأذكار والعبادات ومواقيت الصلاة',androidChannelImportance:'IMPORTANCE_HIGH',androidChannelEnableVibration:true},()=>{});}catch(e){console.warn('تعذر إنشاء قناة الإشعارات.',e);}
+          queueNativeReminderSync();
+          if(typeof plugin.canScheduleExactAlarms==='function')plugin.canScheduleExactAlarms(allowed=>{if(!allowed)showToast('تم تفعيل الإشعارات. قد يتأخر توقيتها؛ اضغط «ضبط دقة المواعيد» للسماح بالمنبهات الدقيقة.');else showToast('تم تفعيل إشعارات Android وجدولة التذكيرات للأيام القادمة.');});
+          else showToast('تم تفعيل إشعارات Android وجدولة التذكيرات للأيام القادمة.');
+          return;
+        }
+        if(!('Notification'in window)||typeof Notification.requestPermission!=='function'){showToast('إشعارات الويب غير متاحة في هذه البيئة. استخدم بناء Cordova مع إضافة الإشعارات المحلية.');return;}
+        try{const permission=await Notification.requestPermission();if(permission==='granted'){const sent=notifyDevice('المُذَكِّر','تم تفعيل إذن إشعارات الويب.');showToast(sent?'تم تفعيل إشعارات الويب.':'تم منح الإذن.');}else showToast('لم يتم منح إذن الإشعارات.');}catch(e){showToast('تعذر طلب إذن إشعارات الويب.');}
+      }
+      function sendReminderOnce(id,title,body){const day=todayKey();state.reminderFired=state.reminderFired||{};const key=`${day}:${id}`;if(state.reminderFired[key])return;state.reminderFired[key]=true;const old=Object.keys(state.reminderFired);if(old.length>120)old.slice(0,old.length-90).forEach(k=>delete state.reminderFired[k]);addNotice(title,body);if(!(cordovaIsReady&&state.nativeNotificationsEnabled))notifyDevice(title,body);}
+      function reminderTimeReached(time,grace=1){if(!/^\d{2}:\d{2}$/.test(String(time||'')))return false;const [h,m]=time.split(':').map(Number);if(h>23||m>59)return false;const now=new Date(),current=now.getHours()*60+now.getMinutes(),target=h*60+m;return current>=target&&current<=target+grace;}
+      function checkPrayerReminder(){if(!state.reminders.prayer||!prayerTimes)return;const lead=Number(state.reminders.prayerLead)||10;const selected=new Set(state.reminders.prayerSelection||['fajr','dhuhr','asr','maghrib','isha']);const now=new Date();[['fajr','الفجر'],['dhuhr','الظهر'],['asr','العصر'],['maghrib','المغرب'],['isha','العشاء']].filter(([key])=>selected.has(key)).forEach(([key,label])=>{const t=prayerTimes?.[key];if(!(t instanceof Date)||Number.isNaN(t.getTime()))return;const due=new Date(t.getTime()-lead*60000);const diff=Math.floor((now-due)/60000);if(diff>=0&&diff<=1)sendReminderOnce(`prayer-${key}`,`اقترب موعد صلاة ${label}`,`باقي نحو ${lead} دقائق على صلاة ${label}. تهيأ للصلاة.`);});}
+      function checkScheduledReminders(){const r=state.reminders||{},day=new Date().getDay();if(r.morning&&reminderTimeReached(r.times?.morning))sendReminderOnce('morning','حان وقت أذكار الصباح','ابدأ يومك بذكر الله، ولو بورد يسير.');if(r.evening&&reminderTimeReached(r.times?.evening))sendReminderOnce('evening','حان وقت أذكار المساء','خذ دقائق لورد أذكار المساء.');const fastingDays={both:[0,3],monday:[0],thursday:[3]};if(r.fasting&&(fastingDays[r.fastingDays||'both']||fastingDays.both).includes(day)&&reminderTimeReached(r.times?.fasting)){const target=day===0?'الاثنين':'الخميس';sendReminderOnce(`fasting-${target}`,'تذكير بصيام النافلة',`غدًا ${target}؛ تذكّر صيام التطوع إن تيسر لك.`);}if(r.kahf&&day===5&&reminderTimeReached(r.times?.kahf))sendReminderOnce('kahf','لا تنس قراءة سورة الكهف','اجعل لك وقتًا لقراءة سورة الكهف يوم الجمعة.');if(r.fridaySunnah&&day===5&&reminderTimeReached(r.times?.fridaySunnah))sendReminderOnce('friday-sunnah','سنن وآداب يوم الجمعة','تذكّر الاغتسال والتطيب والتبكير والصلاة على النبي ﷺ.');const qiyamDays={daily:[0,1,2,3,4,5,6],wed:[3],thu:[4],fri:[5],thuFri:[4,5]};if(r.qiyam&&(qiyamDays[r.qiyamDays||'daily']||qiyamDays.daily).includes(day)&&reminderTimeReached(r.times?.qiyam))sendReminderOnce('qiyam','موعد قيام الليل','ما تيسر من ركعات الليل والوتر؛ قليل دائم خير من كثير منقطع.');(r.customReminders||[]).forEach(item=>{if(item.enabled&&repeatDays(item.repeat).includes(day)&&reminderTimeReached(item.time))sendReminderOnce(`custom-${item.id}`,item.title,'هذا هو الموعد الذي حددته لنفسك في تطبيق المُذَكِّر.');});checkPrayerReminder();}
+      function buildNativeReminderSchedule(){
+        const r=normalizeReminders(state.reminders),entries=[],now=Date.now(),loc=validLocation(state.location)?state.location:DEFAULT_LOCATION;
+        const prayerNames={fajr:'الفجر',dhuhr:'الظهر',asr:'العصر',maghrib:'المغرب',isha:'العشاء'};
+        const selected=new Set(r.prayerSelection||Object.keys(prayerNames));
+        const fastingDays={both:[0,3],monday:[0],thursday:[3]};
+        const qiyamDays={daily:[0,1,2,3,4,5,6],wed:[3],thu:[4],fri:[5],thuFri:[4,5]};
+        const add=(date,key,time,title,body)=>{
+          if(!/^\d{2}:\d{2}$/.test(String(time||'')))return;
+          const [hour,minute]=time.split(':').map(Number);if(hour>23||minute>59)return;
+          const at=new Date(date.getFullYear(),date.getMonth(),date.getDate(),hour,minute,0,0);
+          if(at.getTime()<=now+5000)return;
+          const dateKey=dateKeyFor(date);
+          entries.push({id:makeNativeNotificationId(`${dateKey}:${key}`),title,text:body,trigger:{at},androidChannelId:NATIVE_CHANNEL_ID,androidChannelName:NATIVE_CHANNEL_NAME,smallIcon:'res://notification',androidPriority:'PRIORITY_HIGH',androidAllowWhileIdle:true});
+        };
+        for(let offset=0;offset<NATIVE_REMINDER_DAYS;offset++){
+          const date=new Date();date.setHours(0,0,0,0);date.setDate(date.getDate()+offset);
+          const day=date.getDay();
+          if(r.morning)add(date,'morning',r.times?.morning,'حان وقت أذكار الصباح','ابدأ يومك بذكر الله، ولو بورد يسير.');
+          if(r.evening)add(date,'evening',r.times?.evening,'حان وقت أذكار المساء','خذ دقائق لورد أذكار المساء.');
+          if(r.fasting&&(fastingDays[r.fastingDays||'both']||fastingDays.both).includes(day)){const target=day===0?'الاثنين':'الخميس';add(date,`fasting-${target}`,r.times?.fasting,'تذكير بصيام النافلة',`غدًا ${target}؛ تذكّر صيام التطوع إن تيسر لك.`);}
+          if(r.kahf&&day===5)add(date,'kahf',r.times?.kahf,'لا تنس قراءة سورة الكهف','اجعل لك وقتًا لقراءة سورة الكهف يوم الجمعة.');
+          if(r.fridaySunnah&&day===5)add(date,'friday-sunnah',r.times?.fridaySunnah,'سنن وآداب يوم الجمعة','تذكّر الاغتسال والتطيب والتبكير والصلاة على النبي ﷺ.');
+          if(r.qiyam&&(qiyamDays[r.qiyamDays||'daily']||qiyamDays.daily).includes(day))add(date,'qiyam',r.times?.qiyam,'موعد قيام الليل','ما تيسر من ركعات الليل والوتر؛ قليل دائم خير من كثير منقطع.');
+          (r.customReminders||[]).forEach(item=>{if(item.enabled&&repeatDays(item.repeat).includes(day))add(date,`custom-${item.id}`,item.time,item.title,'هذا هو الموعد الذي حددته لنفسك في تطبيق المُذَكِّر.');});
+          if(r.prayer){
+            const times=(offset===0&&prayerTimesKey===prayerContextKey(date)&&prayerTimes)?prayerTimes:calcPrayerTimes(date,loc);
+            const lead=Number(r.prayerLead)||10;
+            Object.entries(prayerNames).forEach(([key,label])=>{if(!selected.has(key))return;const t=times?.[key];if(!(t instanceof Date)||Number.isNaN(t.getTime()))return;const due=new Date(t.getTime()-lead*60000);if(due.getTime()<=now+5000)return;const dateKey=dateKeyFor(date);entries.push({id:makeNativeNotificationId(`${dateKey}:prayer-${key}`),title:`اقترب موعد صلاة ${label}`,text:`باقي نحو ${lead} دقائق على صلاة ${label}. تهيأ للصلاة.`,trigger:{at:due},androidChannelId:NATIVE_CHANNEL_ID,androidChannelName:NATIVE_CHANNEL_NAME,smallIcon:'res://notification',androidPriority:'PRIORITY_HIGH',androidAllowWhileIdle:true});});
+          }
+        }
+        return entries.slice(0,480);
+      }
+      function queueNativeReminderSync(){
+        if(!cordovaIsReady||!getLocalNotificationPlugin())return;
+        clearTimeout(nativeScheduleTimer);const generation=++nativeScheduleGeneration;
+        nativeScheduleTimer=setTimeout(()=>{
+          const plugin=getLocalNotificationPlugin();if(!plugin||generation!==nativeScheduleGeneration)return;
+          const entries=state.nativeNotificationsEnabled?buildNativeReminderSchedule():[];
+          const applySchedule=()=>{if(generation!==nativeScheduleGeneration)return;if(!entries.length)return;try{plugin.schedule(entries,()=>console.info(`تمت جدولة ${entries.length} من تذكيرات المُذَكِّر.`));}catch(e){console.warn('تعذر جدولة التذكيرات المحلية.',e);}};
+          try{plugin.cancelAll(applySchedule);}catch(e){console.warn('تعذر إعادة بناء جدول الإشعارات.',e);}
+        },350);
+      }
+      function addCordovaHealthResult(label,status,level='neutral',detail=''){
+        const container=$('cordovaHealthResults');if(!container)return;
+        const item=document.createElement('div');item.className='cordova-health-item';
+        const title=document.createElement('b');title.textContent=label;
+        const badge=document.createElement('span');badge.className=`health-badge health-${level}`;badge.textContent=status;
+        item.append(title,badge);
+        if(detail){const note=document.createElement('small');note.textContent=detail;item.appendChild(note);}
+        container.appendChild(item);
+      }
+      function diagnosticBoolean(diagnostic,method){
+        return new Promise(resolve=>{
+          if(!diagnostic||typeof diagnostic[method]!=='function'){resolve(null);return;}
+          try{diagnostic[method](value=>resolve(!!value),()=>resolve(null));}catch(error){console.warn(`Diagnostic ${method} failed`,error);resolve(null);}
+        });
+      }
+      async function runCordovaHealthCheck(){
+        const container=$('cordovaHealthResults');if(!container)return;
+        container.replaceChildren();
+        if(!cordovaIsReady||!window.cordova){
+          addCordovaHealthResult('بيئة Cordova','تحتاج APK','neutral','الفحص الأصلي يعمل بعد تثبيت التطبيق على Android وفتح النسخة المبنية عبر Cordova.');
+          addCordovaHealthResult('الإضافات والصلاحيات','غير قابلة للفحص هنا','neutral','المعاينة في المتصفح لا تستطيع الوصول إلى واجهات Android الأصلية.');
+          return;
+        }
+        const diagnostic=window.cordova.plugins?.diagnostic;
+        addCordovaHealthResult('Cordova','يعمل','ok',`المنصة: ${window.cordova.platformId||'غير معروفة'}`);
+        addCordovaHealthResult('إضافة الجهاز',window.device?'متاحة':'غير موجودة',window.device?'ok':'bad',window.device?`${window.device.manufacturer||''} ${window.device.model||''}`.trim():'تأكد من تثبيت cordova-plugin-device.');
+        const notificationPlugin=getLocalNotificationPlugin();
+        if(!notificationPlugin){addCordovaHealthResult('الإشعارات المحلية','غير موجودة','bad','تأكد من cordova-plugin-local-notifications-continued ثم أعد البناء.');}
+        else if(typeof notificationPlugin.hasPermission==='function'){
+          const granted=await new Promise(resolve=>{try{notificationPlugin.hasPermission(value=>resolve(!!value));}catch(error){resolve(null);}});
+          addCordovaHealthResult('الإشعارات المحلية',granted===true?'الإذن ممنوح':granted===false?'الإذن غير ممنوح':'الإضافة متاحة',''+(granted===true?'ok':granted===false?'warn':'neutral'),'تأكد أيضًا من تفعيل الإشعارات من إعدادات Android.');
+        }else addCordovaHealthResult('الإشعارات المحلية','الإضافة متاحة','ok','تعذر قراءة حالة الإذن من واجهة الإضافة الحالية.');
+        const locationPlugin=!!navigator.geolocation;
+        if(!locationPlugin)addCordovaHealthResult('تحديد الموقع','غير متاح','bad','تأكد من إضافة cordova-plugin-geolocation.');
+        else if(diagnostic&&typeof diagnostic.isLocationAuthorized==='function'){
+          const authorized=await diagnosticBoolean(diagnostic,'isLocationAuthorized');
+          addCordovaHealthResult('إذن الموقع',authorized===true?'ممنوح':authorized===false?'يحتاج إذن':'تعذر التحقق',authorized===true?'ok':authorized===false?'warn':'neutral','يمكنك منح الإذن من إعدادات Android إذا كان مرفوضًا.');
+        }else addCordovaHealthResult('تحديد الموقع','الواجهة متاحة','ok','navigator.geolocation موجودة؛ لم تتوفر قراءة تفصيلية للإذن.');
+        if(diagnostic&&typeof diagnostic.isLocationEnabled==='function'){
+          const enabled=await diagnosticBoolean(diagnostic,'isLocationEnabled');
+          addCordovaHealthResult('خدمة الموقع GPS',enabled===true?'مفعّلة':enabled===false?'مغلقة':'تعذر التحقق',enabled===true?'ok':enabled===false?'warn':'neutral','يجب تشغيل الموقع من إعدادات الهاتف للحصول على الإحداثيات.');
+        }
+        const fileReady=!!(window.cordova.file&&typeof window.resolveLocalFileSystemURL==='function');
+        addCordovaHealthResult('إضافة الملفات',fileReady?'متاحة':'غير موجودة',fileReady?'ok':'bad','تُستخدم لعمليات الملفات داخل مساحة التطبيق عند الحاجة.');
+        const saveReady=typeof window.cordova.plugins?.saveDialog?.saveFile==='function';
+        addCordovaHealthResult('حفظ النسخة خارج التطبيق',saveReady?'نافذة الحفظ متاحة':'الإضافة غير موجودة',saveReady?'ok':'bad','يفترض أن يفتح زر حفظ النسخة منتقي الملفات لاختيار المجلد والاسم.');
+        if(diagnostic&&typeof diagnostic.isIgnoringBatteryOptimizations==='function'){
+          const ignored=await diagnosticBoolean(diagnostic,'isIgnoringBatteryOptimizations');
+          addCordovaHealthResult('تحسين البطارية',ignored===true?'مستثنى':ignored===false?'ما زال مفعّلًا':'تعذر التحقق',ignored===true?'ok':ignored===false?'warn':'neutral',ignored===false?'استخدم زر طلب الاستثناء ثم وافق من نافذة Android.':'حالة الاستثناء من تحسين البطارية.');
+        }else addCordovaHealthResult('فحص البطارية','إضافة التشخيص غير موجودة','bad','تأكد من cordova.plugins.diagnostic في package.json.');
+        if(notificationPlugin&&typeof notificationPlugin.canScheduleExactAlarms==='function'){
+          const exact=await new Promise(resolve=>{try{notificationPlugin.canScheduleExactAlarms(value=>resolve(!!value));}catch(error){resolve(null);}});
+          addCordovaHealthResult('المنبهات الدقيقة',exact===true?'مسموح بها':exact===false?'تحتاج تفعيلًا':'غير معروف',exact===true?'ok':exact===false?'warn':'neutral','قد يؤثر هذا الإعداد في دقة مواعيد التذكيرات.');
+        }
+      }
+      async function requestBatteryOptimizationExemption(){
+        if(!cordovaIsReady||!window.cordova){showToast('طلب استثناء البطارية متاح داخل APK المبني عبر Cordova فقط.');return;}
+        const diagnostic=window.cordova.plugins?.diagnostic;
+        if(!diagnostic||typeof diagnostic.requestIgnoreBatteryOptimizations!=='function'){
+          showToast('إضافة التشخيص غير متاحة. راجع package.json وأعد بناء APK.');return;
+        }
+        const alreadyIgnored=await diagnosticBoolean(diagnostic,'isIgnoringBatteryOptimizations');
+        if(alreadyIgnored===true){showToast('التطبيق مستثنى بالفعل من تحسين البطارية.');await runCordovaHealthCheck();return;}
+        if(!confirm('سيفتح Android نافذة رسمية للسماح للمُذَكِّر بتجاوز تحسين البطارية حتى لا تتأخر التذكيرات. هل تريد المتابعة؟'))return;
+        try{
+          diagnostic.requestIgnoreBatteryOptimizations(()=>{
+            showToast('تم فتح إعداد Android. اختر السماح، ثم ارجع للتطبيق وأعد الفحص.');
+          },error=>{
+            console.warn('Battery optimization request failed',error);
+            showToast('تعذر فتح طلب استثناء تحسين البطارية.');
+          });
+        }catch(error){console.warn(error);showToast('تعذر طلب استثناء تحسين البطارية على هذا الجهاز.');}
+      }
+
+      function initCordovaFeatures(){
+        cordovaIsReady=true;
+        const plugin=getLocalNotificationPlugin();
+        const exactButton=$('exactAlarmSettings');
+        if(exactButton&&plugin&&cordova.platformId==='android'&&typeof plugin.openAlarmSettings==='function')exactButton.hidden=false;
+        if(plugin){
+          try{plugin.createChannel({androidChannelId:NATIVE_CHANNEL_ID,androidChannelName:NATIVE_CHANNEL_NAME,androidChannelDescription:'تنبيهات الأذكار والعبادات ومواقيت الصلاة',androidChannelImportance:'IMPORTANCE_HIGH',androidChannelEnableVibration:true},()=>{},err=>console.warn('تعذر إنشاء قناة الإشعارات.',err));}catch(e){console.warn('تعذر إنشاء قناة الإشعارات.',e);}
+          plugin.on?.('click',(notification)=>{const title=notification?.title||'تذكير من المُذَكِّر',body=notification?.text||'';const id=`native-click-${notification?.id||Date.now()}`;if(!(state.notifications||[]).some(n=>n.id===id))addNotice(title,body);});
+          queueNativeReminderSync();
+        }
+        console.info('Cordova device ready',window.device?.platform||cordova.platformId||'unknown');
+        runCordovaHealthCheck();
+      }
+      function testReminder(){const title='إشعار تجريبي من المُذَكِّر';const body='إعدادات التنبيه تعمل. يمكنك الآن تخصيص مواعيد الأذكار والعبادات.';addNotice(title,body);const sent=notifyDevice(title,body);showToast(sent?'تم إرسال إشعار تجريبي للجهاز وإضافته إلى مركز التطبيق.':'أُضيف الإشعار إلى مركز التطبيق، لكن إرسال إشعار Android يتطلب تفعيل إذن الإشعارات المحلية.');}
+
+      function semver(v){return String(v||'').replace(/^v/i,'').split(/[+-]/)[0].split('.').map(x=>parseInt(x,10)||0);}function compareVersions(a,b){const x=semver(a),y=semver(b);for(let i=0;i<3;i++){if((x[i]||0)>(y[i]||0))return 1;if((x[i]||0)<(y[i]||0))return -1;}return 0;}
+      async function checkUpdate(){const status=$('updateStatus');const repo=($('githubRepo').value||state.repo||'').trim().replace(/^https?:\/\/(www\.)?github\.com\//,'').replace(/\/$/,'');if(!/^[\w.-]+\/[\w.-]+$/.test(repo)){status.textContent='أدخل اسم المستودع بصيغة username/repository أولًا.';return;}state.repo=repo;saveState();status.textContent='جارٍ البحث عن آخر إصدار…';$('checkUpdate').disabled=true;try{const res=await fetch(`https://api.github.com/repos/${repo}/releases/latest`,{headers:{'Accept':'application/vnd.github+json'}});if(res.status===404)throw new Error('لم يتم العثور على Release منشور.');if(!res.ok)throw new Error(`تعذر الاتصال بـ GitHub (HTTP ${res.status}).`);const release=await res.json();const latest=release.tag_name||release.name||'';if(!latest)throw new Error('الإصدار المنشور لا يحتوي على رقم إصدار واضح.');if(compareVersions(latest,APP_VERSION)>0){const apk=(release.assets||[]).find(a=>a.name?.toLowerCase().endsWith('.apk'));status.innerHTML=`<span style="color:#347553">يتوفر إصدار أحدث: <b>${escapeHtml(latest)}</b></span> · <a style="color:#8b7449;text-decoration:underline" target="_blank" rel="noopener" href="${escapeHtml(apk?.browser_download_url||release.html_url)}">${apk?'تحميل APK':'عرض الإصدار'}</a>`;addNotice('يتوفر تحديث جديد للتطبيق',`الإصدار ${latest} متاح الآن على GitHub.`);}else{status.textContent=`أنت تستخدم أحدث إصدار متاح (${APP_VERSION}). آخر إصدار: ${latest}`;}}catch(e){status.textContent=e.message||'حدث خطأ أثناء فحص التحديث.';}finally{$('checkUpdate').disabled=false;}}
+      async function exportData(){
+        const filename=`almuzakkir-backup-${todayKey()}.json`;
+        const content=JSON.stringify(state,null,2);
+        const blob=new Blob([content],{type:'application/json'});
+        if(cordovaIsReady){
+          const saveDialog=window.cordova?.plugins?.saveDialog;
+          if(!saveDialog||typeof saveDialog.saveFile!=='function'){
+            showToast('إضافة نافذة حفظ الملفات غير موجودة. راجع package.json ثم أعد بناء APK.');
+            return;
+          }
+          try{
+            const savedUri=await saveDialog.saveFile(blob,filename);
+            console.info('Cordova backup saved to user-selected location:',savedUri);
+            showToast('تم حفظ النسخة الاحتياطية في المكان الذي اخترته خارج التطبيق.');
+            return;
+          }catch(error){
+            console.warn('لم يكتمل حفظ النسخة عبر نافذة Android.',error);
+            showToast('لم يتم حفظ النسخة. أعد المحاولة واختر مكان الحفظ من نافذة الملفات.');
+            return;
+          }
+        }
+        try{
+          const url=URL.createObjectURL(blob),a=document.createElement('a');
+          a.href=url;a.download=filename;a.style.display='none';document.body.appendChild(a);a.click();a.remove();
+          setTimeout(()=>URL.revokeObjectURL(url),60000);
+          showToast('تم تجهيز ملف النسخة الاحتياطية للتنزيل.');
+        }catch(error){console.warn(error);showToast('تعذر تجهيز ملف النسخة الاحتياطية في هذه البيئة.');}
+      }
+      function importData(file){const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(reader.result);if(!data||typeof data!=='object'||!data.completed)throw new Error('invalid');state={...defaultState(),...data,timeFormat:data.timeFormat==='24'?'24':'12',reminders:normalizeReminders(data.reminders),reminderFired:data.reminderFired&&typeof data.reminderFired==='object'?data.reminderFired:{},hiddenTasks:Array.isArray(data.hiddenTasks)?data.hiddenTasks:[],customTasks:Array.isArray(data.customTasks)?data.customTasks:[],fastingLog:data.fastingLog&&typeof data.fastingLog==='object'?data.fastingLog:{}};saveState();initUI();queueNativeReminderSync();showToast('تم استيراد النسخة الاحتياطية.');}catch(e){showToast('ملف النسخة الاحتياطية غير صالح.');}};reader.readAsText(file);}
+      function initUI(){ applyTheme();$('todayLabel').textContent=dayLabel();$('hijriLabel').textContent=hijriLabel();renderLocation();renderTasks();renderHomeStats();renderAchievements();renderNotifications();updateTasbeeh();updateReminderUI();updatePrayerUI();renderHabitSettings();renderFastingStatus(); }
+      // Theme controls
+      $('themeSelect').addEventListener('change',e=>setTheme(e.target.value));
+      $('timeFormatSelect').addEventListener('change',e=>setTimeFormat(e.target.value));
+      $('themeToggle').addEventListener('click',()=>setTheme(resolvedTheme()==='dark'?'light':'dark'));
+      if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{if(state.theme==='system')applyTheme();});}
+      // Navigation
+      document.querySelectorAll('[data-page]').forEach(el=>el.addEventListener('click',()=>setPage(el.dataset.page)));
+      $('goTasks').addEventListener('click',()=>setPage('worship'));
+      $('locationBtn').addEventListener('click',locate);$('settingsLocate').addEventListener('click',locate);
+      $('notificationsBtn').addEventListener('click',openNotifications);$('closeNotifications').addEventListener('click',()=>$('notificationsOverlay').classList.remove('open'));$('notificationsOverlay').addEventListener('click',e=>{if(e.target===$('notificationsOverlay'))$('notificationsOverlay').classList.remove('open');});
+      $('clearNotifications').addEventListener('click',()=>{state.notifications=state.notifications.filter(n=>!n.read);saveState();renderNotifications();showToast('تم مسح التنبيهات المقروءة.');});
+      $('miniTasbeehAdd').addEventListener('click',()=>{state.tasbeeh++;saveState();updateTasbeeh();renderHomeStats();});$('tasbeehClick').addEventListener('click',()=>{state.tasbeeh++;saveState();updateTasbeeh();renderHomeStats();if(state.tasbeeh===100){addNotice('إنجاز جديد: لسان ذاكر','وصلت إلى 100 تسبيحة. تقبل الله منك.');showToast('أتممت 100 تسبيحة، بارك الله فيك.');}});
+      $('tasbeehReset').addEventListener('click',()=>{if(confirm('إعادة عداد التسبيح إلى الصفر؟')){state.tasbeeh=0;saveState();updateTasbeeh();renderHomeStats();}});$('tasbeehGoalBtn').addEventListener('click',()=>{const n=prompt('اكتب هدف التسبيح:',String(state.tasbeehGoal));if(n!==null){const v=Number(n);if(Number.isInteger(v)&&v>0&&v<=10000){state.tasbeehGoal=v;saveState();updateTasbeeh();}else showToast('اكتب رقمًا صحيحًا من 1 إلى 10000.');}});
+      document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>updatePhrase(b.dataset.phrase)));
+      $('fastingInfo').addEventListener('click',()=>{addNotice('سنن الصيام','من صيام التطوع: الاثنين والخميس، ثلاثة أيام من كل شهر، عرفة لغير الحاج، وعاشوراء مع يوم قبله أو بعده.');openNotifications();});$('fastingLogBtn').addEventListener('click',toggleFastingToday);$('toggleHabitSettings').addEventListener('click',()=>{const panel=$('habitSettingsPanel');const open=panel.hidden;panel.hidden=!open;$('toggleHabitSettings').setAttribute('aria-expanded',String(open));$('toggleHabitSettings').textContent=open?'إخفاء التخصيص':'تخصيص القائمة';});$('customHabitForm').addEventListener('submit',e=>{e.preventDefault();addCustomHabit($('customHabitName').value);$('customHabitName').value='';});
+      const reminderToggleMap={remPrayer:'prayer',remMorning:'morning',remEvening:'evening',remFasting:'fasting',remKahf:'kahf',remFridaySunnah:'fridaySunnah',remQiyam:'qiyam'};
+      Object.entries(reminderToggleMap).forEach(([id,key])=>$(id).addEventListener('change',e=>{state.reminders=normalizeReminders(state.reminders);state.reminders[key]=e.target.checked;if(key==='morning'||key==='evening')state.reminders.azkar=!!(state.reminders.morning||state.reminders.evening);saveState();queueNativeReminderSync();}));
+      const reminderTimeMap={remMorningTime:'morning',remEveningTime:'evening',remFastingTime:'fasting',remKahfTime:'kahf',remFridaySunnahTime:'fridaySunnah',remQiyamTime:'qiyam'};
+      Object.entries(reminderTimeMap).forEach(([id,key])=>$(id).addEventListener('change',e=>{state.reminders=normalizeReminders(state.reminders);state.reminders.times[key]=e.target.value||state.reminders.times[key];const display=$(id+'Display');if(display)display.textContent=fmtStoredTime(e.target.value);saveState();queueNativeReminderSync();showToast('تم حفظ موعد التذكير.');}));
+      $('remPrayerLead').addEventListener('change',e=>{state.reminders.prayerLead=Number(e.target.value)||10;saveState();queueNativeReminderSync();showToast('تم حفظ وقت التنبيه قبل الصلاة.');});
+      $('remQiyamDays').addEventListener('change',e=>{state.reminders.qiyamDays=e.target.value;saveState();queueNativeReminderSync();showToast('تم حفظ أيام تذكير قيام الليل.');});
+      if($('remFastingDays'))$('remFastingDays').addEventListener('change',e=>{state.reminders.fastingDays=e.target.value;saveState();queueNativeReminderSync();showToast('تم حفظ أيام تذكير الصيام.');});
+      document.querySelectorAll('[data-prayer-choice]').forEach(input=>input.addEventListener('change',()=>{state.reminders=normalizeReminders(state.reminders);state.reminders.prayerSelection=Array.from(document.querySelectorAll('[data-prayer-choice]:checked')).map(x=>x.dataset.prayerChoice);saveState();queueNativeReminderSync();showToast('تم تحديث الصلوات المحددة للتذكير.');}));
+      $('customReminderTime').addEventListener('change',e=>{if($('customReminderTimeDisplay'))$('customReminderTimeDisplay').textContent=fmtStoredTime(e.target.value);});
+      $('customReminderForm').addEventListener('submit',addCustomReminder);
+      $('testReminder').addEventListener('click',testReminder);
+      $('calcMethod').addEventListener('change',e=>{state.calcMethod=e.target.value;saveState();prayerTimesKey='';updatePrayerUI();ensurePrayerTimesFromApi(true);queueNativeReminderSync();});$('asrMethod').addEventListener('change',e=>{state.asrMethod=e.target.value;saveState();prayerTimesKey='';updatePrayerUI();ensurePrayerTimesFromApi(true);queueNativeReminderSync();});$('enableNotifications').addEventListener('click',enableNotifications);
+      $('exactAlarmSettings').addEventListener('click',()=>{const plugin=getLocalNotificationPlugin();if(plugin&&typeof plugin.openAlarmSettings==='function'){plugin.openAlarmSettings(()=>showToast('ارجع إلى التطبيق بعد ضبط المنبهات والتذكيرات.'));}else showToast('إعداد دقة المواعيد غير متاح في هذا الجهاز أو البناء.');});
+      $('cordovaHealthCheck').addEventListener('click',runCordovaHealthCheck);$('batteryOptimizationBtn').addEventListener('click',requestBatteryOptimizationExemption);
+      $('saveRepo').addEventListener('click',()=>{state.repo=$('githubRepo').value.trim().replace(/^https?:\/\/(www\.)?github\.com\//,'').replace(/\/$/,'');saveState();$('githubRepo').value=state.repo;showToast('تم حفظ مستودع GitHub.');});$('checkUpdate').addEventListener('click',checkUpdate);
+      $('exportData').addEventListener('click',exportData);$('importDataBtn').addEventListener('click',()=>$('importData').click());$('importData').addEventListener('change',e=>{if(e.target.files?.[0])importData(e.target.files[0]);e.target.value='';});$('clearData').addEventListener('click',()=>{if(confirm('سيتم حذف كل الإنجازات والإعدادات المحفوظة على هذا الجهاز. هل تريد المتابعة؟')){localStorage.removeItem(STORAGE_KEY);state=defaultState();queueNativeReminderSync();initUI();showToast('تم مسح البيانات المحلية.');}});
+      // Archive today's completion on day rollover; refresh the app when Android resumes the WebView.
+      document.addEventListener('deviceready',initCordovaFeatures,false);
+      initUI();
+      ensurePrayerTimesFromApi(false);
+      const refreshOnResume=()=>{if(document.visibilityState==='hidden')return;checkDateRollover();updatePrayerUI();ensurePrayerTimesFromApi(false);checkScheduledReminders();};
+      document.addEventListener('visibilitychange',refreshOnResume);
+      document.addEventListener('resume',()=>{refreshOnResume();queueNativeReminderSync();if(cordovaIsReady)runCordovaHealthCheck();},false);
+      window.addEventListener('focus',refreshOnResume);
+      window.addEventListener('pageshow',refreshOnResume);
+      window.addEventListener('online',()=>ensurePrayerTimesFromApi(true));
+      setInterval(()=>{checkDateRollover();updateCountdownOnly();},1000);
+      setInterval(()=>{checkScheduledReminders();},15000);
+      checkScheduledReminders();
+      if(cordovaIsReady)queueNativeReminderSync();
+    })();
+  </script>
+</body>
+</html>
