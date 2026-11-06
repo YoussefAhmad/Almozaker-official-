@@ -29,27 +29,26 @@ jobs:
       - name: Install Cordova and resource generator
         run: npm install -g cordova cordova-res
 
-      - name: Install dependencies
+      - name: Install project dependencies
         run: npm install
 
       - name: Add Android platform
         run: npx cordova platform add android@13
 
-      - name: Prepare required source images
+      - name: Use resources/icon.png for icon, splash, and notification source
         run: |
-          mkdir -p resources
-          test -s resources/icon.png || (echo 'Missing resources/icon.png'; exit 1)
           test -s resources/icon.png || (echo 'Missing resources/icon.png'; exit 1)
           mkdir -p resources/android
-          cp resources/icon.png resources/android/icon.png
+          cp resources/icon.png resources/splash.png
+          cp resources/icon.png resources/android/splash.png
+          cp resources/icon.png resources/notification.png
 
       - name: Generate Android icon and splash resources
         run: cordova-res android --skip-config --copy
 
-      - name: Install notification icon
+      - name: Copy notification image into Android resources
         run: |
           mkdir -p platforms/android/app/src/main/res/drawable
-          test -s resources/icon.png || (echo 'Missing resources/icon.png'; exit 1)
           cp resources/icon.png platforms/android/app/src/main/res/drawable/notification_icon.png
 
       - name: Build APK
