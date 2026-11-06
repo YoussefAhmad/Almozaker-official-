@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: npm
+          # Do not enable npm cache unless package-lock.json exists.
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -46,6 +46,8 @@ jobs:
             npm ci
           elif [ -f package.json ]; then
             npm install
+          else
+            echo "No package.json found; skipping npm project dependencies."
           fi
 
       - name: Verify resource files
