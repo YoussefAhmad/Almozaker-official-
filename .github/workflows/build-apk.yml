@@ -32,9 +32,8 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
 
-      - name: Install Android SDK
-        run: |
-          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+      - name: Install Android SDK packages
+        run: sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Install Cordova CLI
         run: npm install -g cordova@12
@@ -47,12 +46,11 @@ jobs:
             npm install
           fi
 
-      - name: Verify resources
+      - name: Check resources
         run: |
-          test -f resources/icon.png || (echo "Missing resources/icon.png" && exit 1)
-          test -f resources/splash.png || (echo "Missing resources/splash.png" && exit 1)
-          test -f resources/notification.png || (echo "Missing resources/notification.png" && exit 1)
-          ls -lh resources/icon.png resources/splash.png resources/notification.png
+          test -f resources/icon.png
+          test -f resources/splash.png
+          test -f resources/notification.png
 
       - name: Add Android platform
         run: |
@@ -65,19 +63,26 @@ jobs:
           npm install --no-save cordova-res
           npx cordova-res android --skip-config --copy
 
-      - name: Build APK
+      - name: Prepare Android platform resources
+        run: cordova prepare android
+
+      - name: Build signed Debug APK
+        run: cordova build android
+
+      - name: Find Debug APK
         run: |
-          cordova build android --release -- --packageType=apk
-          echo "Searching for generated APK..."
-          find . -type f -name "*.apk" -print
-          find . -type f -name "*.apk" | grep -q . || {
-            echo "ERROR: No APK generated. Check Cordova/Gradle build logs."
+          APK="platforms/android/app/build/outputs/apk/debug/app-debug.apk"
+          test -f "$APK" || {
+            echo "ERROR: Debug APK was not generated at $APK"
+            find platforms/android -type f -name "*.apk" -print
             exit 1
           }
+          mkdir -p release
+          cp "$APK" release/Almozaker-debug.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: almozaker-release-apk
-          path: '**/*.apk'
+          name: Almozaker-debug-apk
+          path: release/Almozaker-debug.apk
           if-no-files-found: error
