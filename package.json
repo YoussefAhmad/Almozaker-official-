@@ -1,15 +1,27 @@
-
 {
-  "name": "rafeeq-app",
-  "version": "1.0.0",
-  "description": "Rafeeq Android App",
+  "name": "almozaker-app",
+  "version": "1.5.2",
+  "description": "تطبيق المُذَكِّر - Cordova Android app",
   "private": true,
   "scripts": {
-    "build": "cordova build android"
+    "build:android": "cordova build android --debug"
   },
-  "dependencies": {
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-local-notifications-continued": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-android-permissions": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-file": {}
+    }
+  },
+  "devDependencies": {
+    "cordova": "^12.0.0",
     "cordova-android": "^13.0.0",
-    "cordova-plugin-local-notification": "^1.2.3",
+    "cordova-plugin-local-notifications-continued": "1.2.4",
     "cordova-plugin-geolocation": "^5.0.0",
     "cordova-plugin-android-permissions": "^1.1.5",
     "cordova-plugin-device": "^3.0.0",
