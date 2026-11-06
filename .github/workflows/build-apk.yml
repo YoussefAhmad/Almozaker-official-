@@ -23,13 +23,13 @@ jobs:
       - name: Generate icon and splash resources
         run: |
           npm install -g cordova-res
-          cordova-res android --icon resources/icon.png --splash resources/splash.png
+          cordova-res android --icon resources/icon.png --splash resources/icon.png
       - name: Add Android platform
         run: npx cordova platform add android@13
       - name: Copy notification icon into Android resources
         run: |
           mkdir -p platforms/android/app/src/main/res/drawable
-          cp resources/notification.png platforms/android/app/src/main/res/drawable/notification_icon.png
+          cp resources/icon.png platforms/android/app/src/main/res/drawable/notification_icon.png
       - name: Build APK
         run: npx cordova build android
       - uses: actions/upload-artifact@v4
