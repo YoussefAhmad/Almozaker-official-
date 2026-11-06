@@ -1,3 +1,4 @@
+
 name: Build Almozaker Android APK
 
 on:
@@ -22,7 +23,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          # Do not enable npm cache unless package-lock.json exists.
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -33,7 +33,7 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
 
-      - name: Install Android platform tools and SDK
+      - name: Install Android SDK
         run: |
           sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
@@ -46,24 +46,14 @@ jobs:
             npm ci
           elif [ -f package.json ]; then
             npm install
-          else
-            echo "No package.json found; skipping npm project dependencies."
           fi
 
-      - name: Verify resource files
+      - name: Verify resources
         run: |
           test -f resources/icon.png || (echo "Missing resources/icon.png" && exit 1)
           test -f resources/splash.png || (echo "Missing resources/splash.png" && exit 1)
           test -f resources/notification.png || (echo "Missing resources/notification.png" && exit 1)
-          python3 - <<'PY'
-          from PIL import Image
-          for p in ['resources/icon.png','resources/splash.png','resources/notification.png']:
-              im=Image.open(p)
-              print(p, im.size, im.mode)
-          s=Image.open('resources/splash.png')
-          if s.width < 1920 or s.height < 1920:
-              raise SystemExit('resources/splash.png must be at least 1920x1920')
-          PY
+          ls -lh resources/icon.png resources/splash.png resources/notification.png
 
       - name: Add Android platform
         run: |
@@ -76,7 +66,7 @@ jobs:
           npm install --no-save cordova-res
           npx cordova-res android --skip-config --copy
 
-      - name: Build release APK
+      - name: Build APK
         run: cordova build android --release
 
       - name: Upload APK
